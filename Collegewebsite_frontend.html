@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kisan P.G. College</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+    /* --- CSS Variables for Theme --- */
+    :root {
+        --primary-color: #0056b3; /* A strong blue */
+        --primary-color-darker: #004085;
+        --secondary-color: #f8f9fa; /* Light grey */
+        --text-color: #333;
+        --text-color-light: #666;
+        --border-color: #dee2e6;
+        --white: #ffffff;
+        --hover-bg: #e9ecef;
+        --header-bg: var(--white);
+        --nav-bg: var(--primary-color);
+        --nav-link-color: var(--white);
+        --nav-link-hover-bg: var(--primary-color-darker);
+    }
+
+    /* --- Global Styles --- */
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Lato', sans-serif; /* Using Lato, fallback to sans-serif */
+        margin: 0;
+        color: var(--text-color);
+        background-color: var(--secondary-color); /* Light background for the page */
+        line-height: 1.6;
+    }
+
+    img {
+        max-width: 100%; /* Make images responsive by default */
+        height: auto;
+    }
+
+    a {
+        color: var(--primary-color);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    a:hover {
+        color: var(--primary-color-darker);
+        text-decoration: underline;
+    }
+
+    /* --- Header --- */
+    .header {
+        display: flex;
+        background-color: var(--header-bg);
+        align-items: center; /* Vertically align items */
+        padding: 10px 30px; /* Add some padding */
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        justify-content: space-between; /* Push logo and nav apart */
+    }
+
+    .header img.logo { /* Added class 'logo' to the header image */
+        height: 65px; /* Slightly adjusted */
+        width: auto;
+        padding-left: 0; /* Remove default padding */
+        margin-right: 20px; /* Add space between logo and nav */
+    }
+
+    /* --- Navigation --- */
+    nav {
+        background-color: var(--nav-bg);
+         /* Make nav take remaining space if needed, or remove for default width */
+         /* flex-grow: 1; */
+    }
+
+    nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        text-align: right; /* Align nav items to the right */
+    }
+
+    nav ul li {
+        display: inline-block;
+        position: relative; /* For dropdown positioning */
+    }
+
+    nav ul li a {
+        display: block;
+        padding: 15px 20px; /* Increased padding */
+        text-decoration: none;
+        color: var(--nav-link-color);
+        position: relative;
+        transition: background-color 0.3s ease; /* Smooth transition */
+        font-weight: bold;
+    }
+
+    /* Style for dropdown arrow */
+    nav ul li > a:not(:only-child)::after {
+        content: ' ▼'; /* Simple arrow */
+        font-size: 0.7em;
+        /* Removed absolute positioning for simpler inline look */
+        /* position: absolute; */
+        /* right: 8px; */
+        /* top: 50%; */
+        /* transform: translateY(-50%); */
+        opacity: 0.7;
+        margin-left: 5px;
+    }
+
+    nav ul li a:hover {
+        background-color: var(--nav-link-hover-bg);
+        color: var(--white); /* Ensure text stays white on hover */
+        text-decoration: none; /* Remove underline on hover for nav */
+    }
+
+    /* --- Dropdown Menu --- */
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: var(--white);
+        border: 1px solid var(--border-color);
+        border-top: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1000; /* Ensure dropdown is on top */
+        min-width: 200px; /* Wider dropdown */
+        padding: 5px 0; /* Add some padding */
+        border-radius: 0 0 4px 4px; /* Slightly rounded bottom corners */
+    }
+
+    .dropdown-menu li {
+        display: block; /* Stack items vertically */
+    }
+
+    .dropdown-menu li a {
+        padding: 12px 20px;
+        color: var(--text-color); /* Use default text color */
+        display: block;
+        text-align: left;
+        font-weight: normal; /* Normal weight for dropdown items */
+        white-space: nowrap; /* Prevent wrapping */
+    }
+
+    .dropdown-menu li a:hover {
+        background-color: var(--hover-bg); /* Use hover background */
+        color: var(--primary-color); /* Highlight text on hover */
+    }
+
+    /* Show dropdown on hover */
+    nav ul li:hover > .dropdown-menu {
+        display: block;
+    }
+
+    /* --- Slideshow --- */
+    #slideshow {
+        position: relative;
+        width: 95%; /* Make it wider, but not full screen width */
+        max-width: 1200px; /* Max width for very large screens */
+        height: 500px; /* Adjust height as needed */
+        margin: 30px auto; /* Center it with more top/bottom margin */
+        overflow: hidden;
+        border-radius: 5px; /* Slightly rounded corners */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow */
+        /* display: none; Controlled by JS */
+    }
+
+    #slideshow img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+        object-fit: cover; /* Crop images nicely */
+        padding: 0; /* Reset padding */
+        border-radius: 5px; /* Match container rounding */
+    }
+
+    #slideshow img.active {
+        opacity: 1;
+    }
+
+    /* --- Content Area --- */
+    #content {
+        padding: 30px 15px; /* Add padding around the content sections */
+        max-width: 1000px; /* Limit width for readability */
+        margin: 20px auto; /* Center the content block */
+        background-color: var(--white); /* White background for content */
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Subtle shadow */
+    }
+
+    .content-section {
+        display: none; /* Hide by default */
+        padding: 20px; /* Padding inside each section */
+        animation: fadeIn 0.5s ease-in-out; /* Simple fade-in animation */
+    }
+
+    .content-section.active {
+        display: block; /* Show active section */
+    }
+
+    .content-section h2 {
+        color: var(--primary-color);
+        margin-top: 0;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid var(--primary-color); /* Underline headings */
+        font-size: 1.8em; /* Larger headings */
+    }
+
+    .content-section p {
+        margin-bottom: 15px;
+        color: var(--text-color-light); /* Slightly lighter text for paragraphs */
+    }
+
+    /* --- Fade-in Animation --- */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    /* --- Responsive Considerations (Basic Example) --- */
+    @media (max-width: 768px) {
+        .header {
+            flex-direction: column; /* Stack logo and nav on small screens */
+            padding: 10px;
+        }
+
+        .header img.logo {
+            margin-bottom: 10px;
+            height: 50px;
+        }
+
+        nav ul {
+            text-align: center; /* Center nav items */
+        }
+
+        nav ul li {
+            display: block; /* Stack main nav items */
+            text-align: center;
+        }
+
+        nav ul li a {
+            padding: 12px 15px;
+        }
+
+        .dropdown-menu {
+            position: static; /* Make dropdown static within the flow */
+            box-shadow: none;
+            border: none;
+            background-color: #f0f0f0; /* Slightly different background */
+            min-width: auto;
+            padding: 0;
+            border-radius: 0;
+        }
+         .dropdown-menu li a {
+             padding-left: 30px; /* Indent dropdown items */
+             color: #555;
+         }
+          nav ul li:hover > .dropdown-menu {
+             /* Ensure display block still works */
+             display: block;
+         }
+
+
+        #slideshow {
+            width: 100%;
+            height: 300px; /* Adjust height for smaller screens */
+            margin: 15px auto;
+            border-radius: 0; /* Remove rounding on small screens */
+        }
+
+        #content {
+            padding: 15px;
+            margin: 15px auto;
+            border-radius: 0;
+        }
+
+        .content-section h2 {
+            font-size: 1.5em;
+        }
+    }
+
+</style>
+</head>
+
+<body>
+    <div class="header">
+        <!-- IMPORTANT: Use a relative path or a web URL for images -->
+        <!-- Local C:\ paths won't work for others or when deployed -->
+        <img src="C:\Users\PC\Downloads\Logo4.png" alt="College Logo" class="logo"> <!-- Example: Changed path -->
+        <nav>
+             <ul>
+                <li><a href="#" data-target="home">Home</a></li>
+                <li>
+                    <a href="#">About</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" data-target="about-us">About Us</a></li>
+                        <li><a href="#" data-target="campus-life">Campus Life</a></li>
+                        <li><a href="#" data-target="no-of-students">Number of Students</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Academics</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" data-target="courses">Courses</a></li>
+                        <li><a href="#" data-target="faculty">Faculty</a></li>
+                        <li><a href="#" data-target="syllabus">Syllabus</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Facilities</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" data-target="library">Library</a></li>
+                        <li><a href="#" data-target="gymnasium">Gymnasium</a></li>
+                        <li><a href="#" data-target="hostel">Hostel</a></li>
+                        <li><a href="#" data-target="seminar-hall">Seminar Hall</a></li>
+                        <li><a href="#" data-target="sports">Sports</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Student Corner</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" data-target="admission">Admission</a></li>
+                        <li><a href="#" data-target="fee">Fee</a></li>
+                        <li><a href="#" data-target="scheme">Scheme</a></li>
+                        <li><a href="#" data-target="result">Result</a></li>
+                        <li><a href="#" data-target="college-news">College News</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Slideshow Div -->
+    <div id="slideshow">
+        <!-- IMPORTANT: Use relative paths or web URLs for images -->
+        <img src="slideshow1.jpg" alt="Slide 1" class="active"> <!-- Example: Changed path -->
+        <img src="slideshow2.jpg"  alt="Slide 2"> <!-- Example: Changed path -->
+        <img src="slideshow_image2.jpg" @alt="Slide 3"> <!-- Example: Changed path -->
+    </div>
+
+    <!-- Content Div -->
+    <div id="content">
+        <div id="home" class="content-section active">
+            <h2>Welcome to Kisan P.G. College</h2>
+            <p>This is the home page content.</p>
+            <p>Our college provides excellent education...</p>
+        </div>
+        <div id="about-us" class="content-section">
+            <h2>About Us</h2>
+            <p>Kisan P.G. College was established in...</p>
+        </div>
+        <div id="campus-life" class="content-section">
+            <h2>Campus Life</h2>
+            <p>Experience vibrant campus life with various clubs and activities.</p>
+        </div>
+        <div id="no-of-students" class="content-section">
+            <h2>Number of Students</h2>
+            <p>We currently have over [Number] students enrolled across various programs.</p>
+        </div>
+        <div id="courses" class="content-section">
+            <h2>Courses</h2>
+            <p>We offer B.A, B.Sc, M.A, M.Sc in various subjects...</p>
+        </div>
+        <div id="faculty" class="content-section">
+            <h2>Faculty</h2>
+            <p>Our dedicated faculty members are experts in their fields...</p>
+        </div>
+        <div id="syllabus" class="content-section">
+            <h2>Syllabus</h2>
+            <p>Download the latest syllabus for all courses here...</p>
+        </div>
+        <div id="library" class="content-section">
+            <h2>Library</h2>
+            <p>Our library boasts a vast collection of books and digital resources.</p>
+        </div>
+        <div id="gymnasium" class="content-section">
+            <h2>Gymnasium</h2>
+            <p>Stay fit with our well-equipped gymnasium.</p>
+        </div>
+        <div id="hostel" class="content-section">
+            <h2>Hostel</h2>
+            <p>Comfortable and secure hostel facilities are available for students.</p>
+        </div>
+        <div id="seminar-hall" class="content-section">
+            <h2>Seminar Hall</h2>
+            <p>A modern seminar hall for workshops and guest lectures.</p>
+        </div>
+        <div id="sports" class="content-section">
+            <h2>Sports</h2>
+            <p>Extensive grounds and facilities for various sports.</p>
+        </div>
+        <div id="admission" class="content-section">
+            <h2>Admission</h2>
+            <p>Admission process starts in [Month]. Check eligibility criteria...</p>
+        </div>
+        <div id="fee" class="content-section">
+            <h2>Fee</h2>
+            <p>Details about the course-wise fee structure...</p>
+        </div>
+        <div id="scheme" class="content-section">
+            <h2>Scheme</h2>
+            <p>Information about scholarship schemes available...</p>
+        </div>
+        <div id="result" class="content-section">
+            <h2>Result</h2>
+            <p>Check your examination results online here...</p>
+        </div>
+        <div id="college-news" class="content-section">
+            <h2>College News</h2>
+            <p>Stay updated with the latest happenings at the college.</p>
+        </div>
+    </div>
+
+    <script>
+        // --- Slideshow Script ---
+        const slides = document.querySelectorAll('#slideshow img');
+        const slideshowElement = document.getElementById('slideshow'); // Get slideshow container
+        let currentIndex = 0;
+        const totalSlides = slides.length;
+        let slideshowInterval; // Store the interval ID
+
+        function showNextSlide() {
+            if (slides.length === 0) return; // Don't run if no slides
+            slides[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % totalSlides;
+            slides[currentIndex].classList.add('active');
+        }
+
+        // Function to start the slideshow
+        function startSlideshow() {
+            // Clear any existing interval before starting a new one
+            stopSlideshow();
+            if (slides.length > 1) { // Only start if more than one slide
+               slideshowInterval = setInterval(showNextSlide, 3000);
+            }
+        }
+
+        // Function to stop the slideshow
+        function stopSlideshow() {
+            clearInterval(slideshowInterval);
+        }
+
+        // --- SPA Navigation Script ---
+        const navLinks = document.querySelectorAll('nav a[data-target]'); // More specific selector
+        const contentSections = document.querySelectorAll('.content-section');
+        const homeSection = document.getElementById('home');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (event) => {
+                event.preventDefault(); // Prevent default anchor behavior
+                const targetId = link.dataset.target;
+                if (!targetId) return; // Do nothing if no data-target
+
+                // Hide all content sections
+                contentSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+
+                // Show the target content section
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+
+                    // *** CORE FIX: Show/Hide Slideshow based on target ***
+                    if (targetId === 'home') {
+                        slideshowElement.style.display = 'block'; // Or 'relative' if needed
+                        startSlideshow(); // Start slideshow only for home page
+                    } else {
+                        slideshowElement.style.display = 'none'; // Hide slideshow
+                        stopSlideshow(); // Stop slideshow on other pages
+                    }
+                } else {
+                    // Optional: Handle case where target section doesn't exist
+                    console.warn(`Target section #${targetId} not found.`);
+                    // Maybe show home or an error message
+                     homeSection.classList.add('active');
+                     slideshowElement.style.display = 'block';
+                     startSlideshow();
+                }
+            });
+        });
+
+        // --- Initial Page Load ---
+        // Check which section should be active initially (based on HTML 'active' class)
+        let activeSectionFound = false;
+        contentSections.forEach(section => {
+            if (section.classList.contains('active')) {
+                activeSectionFound = true;
+                if (section.id === 'home') {
+                    slideshowElement.style.display = 'block'; // Show slideshow
+                    startSlideshow(); // Start it
+                } else {
+                    slideshowElement.style.display = 'none'; // Hide slideshow
+                    stopSlideshow(); // Ensure it's stopped
+                }
+            }
+        });
+
+        // Fallback if no section has 'active' class in HTML (shouldn't happen with current HTML)
+        if (!activeSectionFound && homeSection) {
+             homeSection.classList.add('active');
+             slideshowElement.style.display = 'block';
+             startSlideshow();
+        } else if (!activeSectionFound) {
+            // If even homeSection doesn't exist, hide slideshow
+             slideshowElement.style.display = 'none';
+        }
+
+    </script>
+</body>
+
+</html>
