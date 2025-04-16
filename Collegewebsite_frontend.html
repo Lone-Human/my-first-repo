@@ -5,299 +5,760 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kisan P.G. College</title>
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <style>
-    /* --- CSS Variables for Theme --- */
-    :root {
-        --primary-color: #0056b3; /* A strong blue */
-        --primary-color-darker: #004085;
-        --secondary-color: #f8f9fa; /* Light grey */
-        --text-color: #333;
-        --text-color-light: #666;
-        --border-color: #dee2e6;
-        --white: #ffffff;
-        --hover-bg: #e9ecef;
-        --header-bg: var(--white);
-        --nav-bg: var(--primary-color);
-        --nav-link-color: var(--white);
-        --nav-link-hover-bg: var(--primary-color-darker);
-    }
+        /* --- CSS Variables for Theme --- */
+        :root {
+            --primary-color: #0056b3; /* A strong blue */
+            --primary-color-darker: #004085;
+            --secondary-color: #f8f9fa; /* Light grey */
+            --text-color: #333;
+            --text-color-light: #666;
+            --border-color: #dee2e6;
+            --white: #ffffff;
+            --hover-bg: #e9ecef;
+            --header-bg: var(--white);
+            --nav-bg: var(--primary-color);
+            --nav-link-color: var(--white);
+            --nav-link-hover-bg: var(--primary-color-darker);
+            --dropdown-link-color: #333; /* Color for links inside dropdown */
+            --footer-bg: #000000; /* Black for footer */
+            --footer-text-color: #f0f0f0; /* Light grey for footer text */
+            --footer-link-color: #cccccc;
+            --footer-link-hover: var(--white);
+            --footer-heading-color: var(--white);
+            --footer-icon-bg: #1da1f2; /* Twitter blue, adjust as needed */
+        }
 
-    /* --- Global Styles --- */
-    * {
-        box-sizing: border-box;
-    }
+        /* --- Global Styles --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    body {
-        font-family: 'Lato', sans-serif; /* Using Lato, fallback to sans-serif */
-        margin: 0;
-        color: var(--text-color);
-        background-color: var(--secondary-color); /* Light background for the page */
-        line-height: 1.6;
-    }
+        html {
+             scroll-behavior: smooth; /* Smooth scroll for anchor links if needed */
+        }
 
-    img {
-        max-width: 100%; /* Make images responsive by default */
-        height: auto;
-    }
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--text-color);
+            background-color: var(--secondary-color);
+            line-height: 1.6;
+            display: flex; /* Use flexbox for sticky footer */
+            flex-direction: column; /* Stack children vertically */
+            min-height: 100vh; /* Ensure body takes at least full viewport height */
+        }
 
-    a {
-        color: var(--primary-color);
-        text-decoration: none;
-        transition: color 0.3s ease;
-    }
+        main {
+            flex-grow: 1; /* Allow main content to grow and push footer down */
+        }
 
-    a:hover {
-        color: var(--primary-color-darker);
-        text-decoration: underline;
-    }
 
-    /* --- Header --- */
-    .header {
-        display: flex;
-        background-color: var(--header-bg);
-        align-items: center; /* Vertically align items */
-        padding: 10px 30px; /* Add some padding */
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-        justify-content: space-between; /* Push logo and nav apart */
-    }
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block; /* Prevents bottom space */
+        }
 
-    .header img.logo { /* Added class 'logo' to the header image */
-        height: 65px; /* Slightly adjusted */
-        width: auto;
-        padding-left: 0; /* Remove default padding */
-        margin-right: 20px; /* Add space between logo and nav */
-    }
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
 
-    /* --- Navigation --- */
-    nav {
-        background-color: var(--nav-bg);
-         /* Make nav take remaining space if needed, or remove for default width */
-         /* flex-grow: 1; */
-    }
+        a:hover {
+            color: var(--primary-color-darker);
+            text-decoration: underline;
+        }
 
-    nav ul {
-        list-style: none;
-        margin: 0;
-        padding: 0;
-        text-align: right; /* Align nav items to the right */
-    }
-
-    nav ul li {
-        display: inline-block;
-        position: relative; /* For dropdown positioning */
-    }
-
-    nav ul li a {
-        display: block;
-        padding: 15px 20px; /* Increased padding */
-        text-decoration: none;
-        color: var(--nav-link-color);
-        position: relative;
-        transition: background-color 0.3s ease; /* Smooth transition */
-        font-weight: bold;
-    }
-
-    /* Style for dropdown arrow */
-    nav ul li > a:not(:only-child)::after {
-        content: ' ▼'; /* Simple arrow */
-        font-size: 0.7em;
-        /* Removed absolute positioning for simpler inline look */
-        /* position: absolute; */
-        /* right: 8px; */
-        /* top: 50%; */
-        /* transform: translateY(-50%); */
-        opacity: 0.7;
-        margin-left: 5px;
-    }
-
-    nav ul li a:hover {
-        background-color: var(--nav-link-hover-bg);
-        color: var(--white); /* Ensure text stays white on hover */
-        text-decoration: none; /* Remove underline on hover for nav */
-    }
-
-    /* --- Dropdown Menu --- */
-    .dropdown-menu {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        background-color: var(--white);
-        border: 1px solid var(--border-color);
-        border-top: none;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        z-index: 1000; /* Ensure dropdown is on top */
-        min-width: 200px; /* Wider dropdown */
-        padding: 5px 0; /* Add some padding */
-        border-radius: 0 0 4px 4px; /* Slightly rounded bottom corners */
-    }
-
-    .dropdown-menu li {
-        display: block; /* Stack items vertically */
-    }
-
-    .dropdown-menu li a {
-        padding: 12px 20px;
-        color: var(--text-color); /* Use default text color */
-        display: block;
-        text-align: left;
-        font-weight: normal; /* Normal weight for dropdown items */
-        white-space: nowrap; /* Prevent wrapping */
-    }
-
-    .dropdown-menu li a:hover {
-        background-color: var(--hover-bg); /* Use hover background */
-        color: var(--primary-color); /* Highlight text on hover */
-    }
-
-    /* Show dropdown on hover */
-    nav ul li:hover > .dropdown-menu {
-        display: block;
-    }
-
-    /* --- Slideshow --- */
-    #slideshow {
-        position: relative;
-        width: 95%; /* Make it wider, but not full screen width */
-        max-width: 1200px; /* Max width for very large screens */
-        height: 500px; /* Adjust height as needed */
-        margin: 30px auto; /* Center it with more top/bottom margin */
-        overflow: hidden;
-        border-radius: 5px; /* Slightly rounded corners */
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Slightly stronger shadow */
-        /* display: none; Controlled by JS */
-    }
-
-    #slideshow img {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-        opacity: 0;
-        transition: opacity 1s ease-in-out;
-        object-fit: cover; /* Crop images nicely */
-        padding: 0; /* Reset padding */
-        border-radius: 5px; /* Match container rounding */
-    }
-
-    #slideshow img.active {
-        opacity: 1;
-    }
-
-    /* --- Content Area --- */
-    #content {
-        padding: 30px 15px; /* Add padding around the content sections */
-        max-width: 1000px; /* Limit width for readability */
-        margin: 20px auto; /* Center the content block */
-        background-color: var(--white); /* White background for content */
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.05); /* Subtle shadow */
-    }
-
-    .content-section {
-        display: none; /* Hide by default */
-        padding: 20px; /* Padding inside each section */
-        animation: fadeIn 0.5s ease-in-out; /* Simple fade-in animation */
-    }
-
-    .content-section.active {
-        display: block; /* Show active section */
-    }
-
-    .content-section h2 {
-        color: var(--primary-color);
-        margin-top: 0;
-        margin-bottom: 20px;
-        padding-bottom: 10px;
-        border-bottom: 2px solid var(--primary-color); /* Underline headings */
-        font-size: 1.8em; /* Larger headings */
-    }
-
-    .content-section p {
-        margin-bottom: 15px;
-        color: var(--text-color-light); /* Slightly lighter text for paragraphs */
-    }
-
-    /* --- Fade-in Animation --- */
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
-
-    /* --- Responsive Considerations (Basic Example) --- */
-    @media (max-width: 768px) {
+        /* --- Header --- */
         .header {
-            flex-direction: column; /* Stack logo and nav on small screens */
-            padding: 10px;
+            display: flex;
+            background-color: var(--header-bg);
+            align-items: center;
+            padding: 10px 30px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            justify-content: space-between;
+            flex-wrap: wrap; /* Allow wrapping */
         }
 
         .header img.logo {
-            margin-bottom: 10px;
-            height: 50px;
+            height: 65px;
+            width: auto;
+            margin-right: 20px;
+        }
+
+        /* --- Navigation --- */
+        nav {
+            background-color: var(--nav-bg);
         }
 
         nav ul {
-            text-align: center; /* Center nav items */
+            list-style: none;
+            text-align: right; /* Align nav items to the right */
+            padding-left: 0; /* Remove default padding */
         }
 
         nav ul li {
-            display: block; /* Stack main nav items */
-            text-align: center;
+            display: inline-block;
+            position: relative; /* For dropdown positioning */
         }
 
         nav ul li a {
-            padding: 12px 15px;
+            display: block;
+            padding: 15px 20px;
+            text-decoration: none;
+            color: var(--nav-link-color);
+            position: relative;
+            transition: background-color 0.3s ease;
+            font-weight: bold;
+            white-space: nowrap; /* Prevent wrapping */
         }
 
+        /* Arrow for dropdown indication */
+        /* Apply only to links that are parents of dropdowns (have sibling ul.dropdown-menu) */
+         nav ul li > a:has(+ ul.dropdown-menu)::after {
+            content: ' ▼';
+            font-size: 0.7em;
+            opacity: 0.7;
+            margin-left: 5px;
+            display: inline-block;
+        }
+
+        nav ul li a:hover {
+            background-color: var(--nav-link-hover-bg);
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        /* --- Dropdown Menu --- */
         .dropdown-menu {
-            position: static; /* Make dropdown static within the flow */
-            box-shadow: none;
-            border: none;
-            background-color: #f0f0f0; /* Slightly different background */
-            min-width: auto;
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0; /* Align to the left of the parent li */
+            background-color: var(--white);
+            border: 1px solid var(--border-color);
+            border-top: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            min-width: 200px; /* Default min-width */
+            padding: 5px 0;
+            border-radius: 0 0 4px 4px;
+            text-align: left; /* Ensure text aligns left */
+            list-style: none; /* Ensure no bullets */
+        }
+
+        .dropdown-menu li {
+            display: block;
+        }
+
+        .dropdown-menu li a {
+            padding: 10px 20px; /* Adjusted padding */
+            color: var(--dropdown-link-color);
+            display: block;
+            font-weight: normal;
+            white-space: nowrap;
+            background-color: transparent; /* Ensure clean hover */
+            text-decoration: none; /* Remove underline */
+            font-size: 0.95em; /* Slightly smaller font for dropdown items */
+        }
+
+        .dropdown-menu li a:hover {
+            background-color: var(--hover-bg);
+            color: var(--primary-color); /* Keep link color consistent on hover */
+        }
+
+        /* Show dropdown on hover */
+        nav ul li:hover > .dropdown-menu {
+            display: block;
+        }
+
+        /* --- Faculty Multi-Column Dropdown Styles --- */
+        .dropdown-menu.faculty-dropdown {
+            min-width: 650px; /* Wider dropdown */
+            padding: 15px; /* More padding */
+            left: auto; /* Override default left:0 */
+            right: 0; /* Align to the right edge of the parent if needed, or adjust as necessary */
+        }
+
+        .faculty-dropdown .dropdown-columns-container {
+            display: flex;
+            flex-wrap: wrap; /* Allow wrapping on smaller screens if needed */
+            gap: 25px; /* Space between columns */
+            justify-content: flex-start; /* Align columns to the start */
+        }
+
+        .faculty-dropdown .dropdown-column {
+            flex: 1; /* Allow columns to grow */
+            min-width: 180px; /* Minimum width for a column */
+        }
+
+        .faculty-dropdown .dropdown-column h3 {
+            font-size: 1em;
+            font-weight: bold;
+            color: var(--primary-color); /* Heading color */
+            margin-bottom: 10px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .faculty-dropdown .dropdown-column ul {
+            list-style: none;
             padding: 0;
-            border-radius: 0;
+            margin: 0;
         }
-         .dropdown-menu li a {
-             padding-left: 30px; /* Indent dropdown items */
-             color: #555;
-         }
-          nav ul li:hover > .dropdown-menu {
-             /* Ensure display block still works */
-             display: block;
+
+        .faculty-dropdown .dropdown-column ul li {
+            margin-bottom: 2px; /* Small space between items */
+        }
+
+        .faculty-dropdown .dropdown-column ul li a {
+            white-space: normal; /* Allow text wrapping for long department names */
+            padding: 6px 0; /* Adjust vertical padding */
+             color: var(--text-color-light); /* Lighter text for departments */
+             font-size: 0.9em;
+        }
+         .faculty-dropdown .dropdown-column ul li a:hover {
+             color: var(--primary-color-darker);
+             background-color: transparent; /* No background change on hover for these */
+             text-decoration: underline; /* Add underline on hover */
          }
 
 
+        /* --- Slideshow --- */
         #slideshow {
-            width: 100%;
-            height: 300px; /* Adjust height for smaller screens */
-            margin: 15px auto;
-            border-radius: 0; /* Remove rounding on small screens */
+            position: relative;
+            width: 95%;
+            max-width: 1200px;
+            height: 500px;
+            margin: 30px auto;
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            display: none; /* Controlled by JS */
         }
 
+        #slideshow img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        #slideshow img.active {
+            opacity: 1;
+        }
+
+        /* --- Content Area --- */
         #content {
-            padding: 15px;
-            margin: 15px auto;
-            border-radius: 0;
+            padding: 30px 15px;
+            max-width: 1000px;
+            margin: 20px auto;
+            background-color: var(--white);
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            overflow: hidden; /* Contain floats/margins */
+        }
+
+        .content-section {
+            display: none;
+            padding: 20px;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .content-section.active {
+            display: block;
         }
 
         .content-section h2 {
-            font-size: 1.5em;
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            font-size: 1.8em;
         }
-    }
 
-</style>
+        .content-section p, .content-section ul { /* Apply margin to paragraphs and lists */
+            margin-bottom: 15px;
+            color: var(--text-color-light);
+        }
+        .content-section ul {
+             padding-left: 20px; /* Indent list items */
+             list-style: disc; /* Default list style */
+        }
+        .content-section li {
+            margin-bottom: 5px; /* Space between list items */
+        }
+
+        /* --- *** NEW: Home Intro Section Styles *** --- */
+        .home-intro {
+            display: flex;
+            align-items: center;
+            gap: 30px; /* Space between logo and text */
+            margin-bottom: 30px; /* Space below this section */
+            padding: 20px;
+            background-color: #f9f9f9; /* Slightly different background */
+            border-radius: 5px;
+            flex-wrap: wrap; /* Wrap on smaller screens */
+            
+        }
+        .home-intro img.logo {
+            height: 120px; /* Adjust size as needed */
+            width: auto;
+            flex-shrink: 0; /* Prevent logo from shrinking too much */
+        }
+        .home-intro-text {
+            flex-grow: 1;
+        }
+        .home-intro-text h2 {
+             margin-top: 0;
+             margin-bottom: 10px;
+             border-bottom: none; /* Remove border if reusing h2 style */
+             font-size: 1.6em; /* Adjust size */
+             color: var(--primary-color-darker);
+        }
+         .home-intro-text p {
+             margin-bottom: 5px;
+             color: var(--text-color); /* Darker text for intro */
+         }
+
+
+        /* --- Dashboard Card Styles --- */
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 30px;
+            padding: 10px 0;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 25px 15px;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text-color);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+            flex: 1 1 140px;
+            min-width: 130px;
+            max-width: 170px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 150px;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+            text-decoration: none;
+        }
+         .card:hover .card-text,
+         .card:hover .card-icon {
+            color: var(--primary-color-darker);
+         }
+
+        .card-icon {
+            font-size: 2.5em;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+             transition: color 0.2s ease-in-out;
+        }
+
+        .card-text {
+            font-size: 0.9em;
+            font-weight: bold;
+            line-height: 1.4;
+            color: var(--text-color);
+            transition: color 0.2s ease-in-out;
+        }
+
+        /* --- *** NEW: Contact Us Section Styles *** --- */
+        #contact-us .contact-info p {
+            margin-bottom: 10px;
+            display: flex; /* Align icon and text */
+            align-items: center;
+            gap: 10px; /* Space between icon and text */
+            color: var(--text-color);
+        }
+        #contact-us .contact-info i {
+            color: var(--primary-color);
+            font-size: 1.2em;
+            width: 20px; /* Fixed width for alignment */
+            text-align: center;
+        }
+        #contact-us .contact-info strong {
+            color: var(--text-color); /* Keep label dark */
+        }
+
+        /* --- Fade-in Animation --- */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+
+        /* --- *** NEW: Footer Styles *** --- */
+        footer {
+            background-color: var(--footer-bg);
+            color: var(--footer-text-color);
+            padding: 40px 20px 20px 20px; /* More top padding */
+            margin-top: auto; /* Push footer to bottom if content is short (requires body display:flex) */
+        }
+
+        .footer-container {
+            max-width: 1200px; /* Limit footer width */
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px; /* Space between columns */
+            justify-content: space-between; /* Distribute space */
+        }
+
+        .footer-column {
+            flex: 1; /* Allow columns to grow */
+            min-width: 200px; /* Minimum width before wrapping */
+            margin-bottom: 20px; /* Space below columns when they wrap */
+        }
+
+        .footer-column h3 {
+            color: var(--footer-heading-color);
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #444; /* Subtle border */
+            font-weight: bold;
+        }
+
+        .footer-column p, .footer-column address {
+            margin-bottom: 10px;
+            line-height: 1.7;
+            font-style: normal; /* Reset address italics */
+            font-size: 0.9em;
+        }
+         .footer-column strong {
+            font-weight: bold;
+            color: #ddd; /* Slightly brighter for emphasis */
+         }
+
+
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 8px;
+            font-size: 0.9em;
+            position: relative;
+            padding-left: 15px; /* Space for the arrow */
+        }
+
+        /* Add the '>' symbol using ::before */
+        .footer-column ul li::before {
+            content: ">";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--primary-color); /* Use primary color for arrow */
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .footer-column a {
+            color: var(--footer-link-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: var(--footer-link-hover);
+            text-decoration: underline;
+        }
+
+        /* Social Icons */
+        .social-networks p {
+            margin-bottom: 15px;
+            font-size: 0.9em;
+        }
+        .social-icons {
+            display: flex;
+            gap: 10px;
+        }
+        .social-icons a {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            line-height: 35px; /* Center icon vertically */
+            text-align: center;
+            border-radius: 4px;
+            background-color: var(--footer-icon-bg); /* Default blue */
+            color: var(--white);
+            font-size: 1.1em;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .social-icons a:hover {
+            transform: scale(1.1);
+            text-decoration: none;
+        }
+        /* Specific social icon colors (optional) */
+        .social-icons a.facebook { background-color: #3b5998; }
+        .social-icons a.twitter { background-color: #1da1f2; }
+        .social-icons a.linkedin { background-color: #0077b5; }
+
+        /* Footer Bottom Bar (Optional) */
+        .footer-bottom {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid #333;
+            font-size: 0.85em;
+            color: #aaa;
+        }
+
+
+        /* --- Responsive Considerations --- */
+        @media (max-width: 992px) {
+             .dropdown-menu.faculty-dropdown { min-width: 450px; }
+             .faculty-dropdown .dropdown-columns-container { gap: 15px; }
+             .faculty-dropdown .dropdown-column { min-width: 150px; }
+
+             /* Adjust footer columns */
+             .footer-column {
+                 min-width: calc(50% - 15px); /* Two columns layout */
+             }
+        }
+
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                padding: 10px;
+                text-align: center;
+            }
+            .header img.logo { margin-bottom: 10px; margin-right: 0; height: 50px; }
+            nav { width: 100%; }
+            nav ul { text-align: center; }
+            nav ul li { display: block; border-bottom: 1px solid var(--primary-color-darker); }
+            nav ul li:last-child { border-bottom: none; }
+            nav ul li a { padding: 12px 15px; }
+
+            /* Adjust ALL dropdowns for mobile */
+            .dropdown-menu {
+                position: static; box-shadow: none; border: none;
+                background-color: #e8f0fe; width: 100%; padding: 0;
+                border-radius: 0; display: none;
+                border-top: 1px solid #d4e3fc; min-width: auto !important;
+            }
+            nav ul li:hover > .dropdown-menu { display: block; }
+            .dropdown-menu li { border-bottom: 1px solid #d4e3fc; }
+            .dropdown-menu li:last-child { border-bottom: none; }
+            .dropdown-menu li a {
+                padding: 10px 20px 10px 40px; color: var(--primary-color-darker);
+                text-align: center; white-space: normal;
+            }
+            .dropdown-menu li a:hover { background-color: #d4e3fc; }
+
+            /* Faculty Dropdown Mobile */
+            .dropdown-menu.faculty-dropdown { padding: 10px; }
+            .faculty-dropdown .dropdown-columns-container { flex-direction: column; gap: 10px; }
+            .faculty-dropdown .dropdown-column { min-width: 100%; margin-bottom: 10px; }
+            .faculty-dropdown .dropdown-column h3 { text-align: center; margin-bottom: 5px; padding-bottom: 3px; }
+            .faculty-dropdown .dropdown-column ul li a { padding: 8px 15px; text-align: center; }
+
+            #slideshow { width: 100%; height: 300px; margin: 15px 0; border-radius: 0; }
+            #content { padding: 15px; margin: 15px 0; border-radius: 0; width: 100%; }
+            .content-section h2 { font-size: 1.5em; }
+
+            .card-container { gap: 15px; }
+            .card { flex-basis: calc(50% - 10px); min-width: 120px; padding: 20px 10px; }
+            .card-icon { font-size: 2.2em; }
+            .card-text { font-size: 0.85em; }
+
+            /* Footer columns stack */
+             .footer-column {
+                 min-width: 100%; /* Full width */
+             }
+             .footer-container {
+                 gap: 20px;
+             }
+             .footer-column h3 {
+                 font-size: 1em;
+             }
+              .footer-column p, .footer-column ul li, .footer-column a, .social-networks p {
+                 font-size: 0.85em;
+             }
+
+            /* Home intro responsive */
+            .home-intro {
+                flex-direction: column; /* Stack logo and text */
+                text-align: center;
+                gap: 15px;
+            }
+            .home-intro img.logo {
+                 height: 60px; /* Slightly smaller logo on mobile */
+                 margin: 0 auto; /* Center the logo */
+            }
+             .home-intro-text h2 {
+                 font-size: 1.4em;
+             }
+
+        }
+
+        @media (max-width: 480px) {
+            .card { flex-basis: calc(100% - 10px); max-width: none; }
+             /* Footer font size slightly smaller */
+             .footer-column p, .footer-column ul li, .footer-column a, .social-networks p, .footer-bottom {
+                 font-size: 0.8em;
+             }
+             .social-icons a {
+                 width: 30px; height: 30px; line-height: 30px; font-size: 1em;
+             }
+        }
+                /* --- *** NEW: Management Section Styles *** --- */
+                .management-section {
+            margin-top: 40px; /* Add space above this section */
+            padding-top: 20px;
+            border-top: 1px solid var(--border-color); /* Optional separator line */
+        }
+
+        .management-section h2 {
+            text-align: center; /* Center the heading */
+            margin-bottom: 30px;
+            font-size: 1.8em;
+            color: var(--primary-color-darker);
+             border-bottom: none; /* Override default h2 border if needed */
+        }
+
+        .management-cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px; /* Space between cards */
+            justify-content: center; /* Center cards horizontally */
+        }
+
+        .management-card {
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0; /* Lighter border */
+            border-radius: 8px;
+            overflow: hidden; /* Keep image corners rounded */
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            flex: 1 1 300px; /* Grow, shrink, base width 300px */
+            max-width: 340px; /* Max width for larger screens */
+            display: flex;
+            flex-direction: column; /* Stack image and content vertically */
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+
+        .management-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+        }
+
+        .card-image-container {
+             /* No specific styles needed unless controlling aspect ratio */
+        }
+
+        .management-card img {
+            display: block;
+            width: 100%;
+            height: auto; /* Maintain aspect ratio */
+            /* Optional: Enforce aspect ratio if images are inconsistent */
+            /* aspect-ratio: 4 / 4; */
+            /* object-fit: cover; */
+        }
+
+        /* The yellow separator line */
+        .separator-line {
+             height: 4px; /* Line thickness */
+             background-color: #f0c040; /* Gold/yellow color */
+             /* Removed margin-bottom, padding on .card-content handles spacing */
+        }
+
+        .card-content {
+            padding: 20px;
+            text-align: left;
+            flex-grow: 1; /* Allows content to push footer down if card heights vary */
+        }
+
+        .card-content h3 {
+            margin-top: 0;
+            margin-bottom: 5px;
+            font-size: 1.15em; /* Slightly smaller than main headings */
+            color: var(--text-color);
+            font-weight: bold;
+        }
+
+        .card-content .designation {
+            font-size: 0.9em;
+            font-weight: bold;
+            color: var(--text-color-light); /* Lighter color for designation */
+            margin-bottom: 15px;
+        }
+
+        .card-content .details {
+            /* Container for details */
+        }
+
+        .card-content .details p {
+            font-size: 0.85em;
+            color: var(--text-color-light);
+            margin-bottom: 4px; /* Smaller space between detail lines */
+            line-height: 1.5;
+        }
+         .card-content .details p:last-child {
+             margin-bottom: 0; /* No space after the last detail */
+         }
+
+         /* Responsive adjustments for cards if needed */
+         @media (max-width: 768px) {
+             .management-card {
+                 flex-basis: calc(50% - 15px); /* Try for 2 columns */
+                 max-width: calc(50% - 15px);
+             }
+              .management-section h2 {
+                 font-size: 1.6em;
+             }
+         }
+          @media (max-width: 576px) {
+             .management-card {
+                 flex-basis: 90%; /* Mostly 1 column */
+                 max-width: 90%;
+             }
+         }
+
+    </style>
 </head>
 
 <body>
-    <div class="header">
-        <!-- IMPORTANT: Use a relative path or a web URL for images -->
-        <!-- Local C:\ paths won't work for others or when deployed -->
-        <img src="C:\Users\PC\Downloads\Logo4.png" alt="College Logo" class="logo"> <!-- Example: Changed path -->
+    <header class="header">
+        <a href="#" data-target="home">
+           <img src="https://kisanpgcollege.ac.in/wp-content/themes/propertylabtheme/assets/img/Logo4.png" alt="Kisan P.G. College Logo" class="logo">
+        </a>
         <nav>
              <ul>
                 <li><a href="#" data-target="home">Home</a></li>
@@ -307,14 +768,89 @@
                         <li><a href="#" data-target="about-us">About Us</a></li>
                         <li><a href="#" data-target="campus-life">Campus Life</a></li>
                         <li><a href="#" data-target="no-of-students">Number of Students</a></li>
+                        <!-- Added missing links from footer image -->
+                        <li><a href="#" data-target="vision-mission">Vision & Mission</a></li>
+                        <li><a href="#" data-target="management-staff">Management Staff</a></li>
+                        <li><a href="#" data-target="administrative-staff">Administrative Staff</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="#">Academics</a>
                     <ul class="dropdown-menu">
                         <li><a href="#" data-target="courses">Courses</a></li>
-                        <li><a href="#" data-target="faculty">Faculty</a></li>
                         <li><a href="#" data-target="syllabus">Syllabus</a></li>
+                        <!-- Added missing links from footer image -->
+                        <li><a href="#" data-target="ignou-info">IGNOU</a></li>
+                        <li><a href="#" data-target="professional-courses">Professional Courses</a></li>
+                        <li><a href="#" data-target="teacher-education">Teacher Education</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Faculty</a>
+                    <ul class="dropdown-menu faculty-dropdown">
+                         <li>
+                             <div class="dropdown-columns-container">
+                                <div class="dropdown-column">
+                                    <h3>Faculty Of Arts</h3>
+                                    <ul>
+                                        <li><a href="#">Ancient Indian History</a></li>
+                                        <li><a href="#">Archaeology</a></li>
+                                        <li><a href="#">Economics</a></li>
+                                        <li><a href="#">Education</a></li>
+                                        <li><a href="#">English</a></li>
+                                        <li><a href="#">Geography</a></li>
+                                        <li><a href="#">Hindi</a></li>
+                                        <li><a href="#">Medieval Modern History</a></li>
+                                        <li><a href="#">Political Science</a></li>
+                                        <li><a href="#">Sanskrit</a></li>
+                                        <li><a href="#">Sociology</a></li>
+                                        <li><a href="#">Urdu</a></li>
+                                        <li><a href="#">Defence & Strategic Studies (Military Science)</a></li>
+                                        <li><a href="#">Drawing & Painting</a></li>
+                                        <li><a href="#">Home Science</a></li>
+                                        <li><a href="#">Philosophy</a></li>
+                                        <li><a href="#">Physical Education</a></li>
+                                        <li><a href="#">Psychology</a></li>
+                                    </ul>
+                                </div>
+                                <div class="dropdown-column">
+                                    <h3>Faculty Of Science</h3>
+                                    <ul>
+                                        <li><a href="#">Botany</a></li>
+                                        <li><a href="#">Chemistry</a></li>
+                                        <li><a href="#">Mathematics</a></li>
+                                        <li><a href="#">Physics</a></li>
+                                        <li><a href="#">Zoology</a></li>
+                                        <li><a href="#">Bio-Chemistry</a></li>
+                                        <li><a href="#">Computer Application</a></li>
+                                        <li><a href="#">Environmental Science</a></li>
+                                        <li><a href="#">Seed Technology</a></li>
+                                     </ul>
+                                    <br>
+                                     <h3>Faculty Of Commerce</h3>
+                                     <ul>
+                                        <li><a href="#">Commerce</a></li>
+                                     </ul>
+                                </div>
+                                <div class="dropdown-column">
+                                    <h3>Faculty Of Teacher Education</h3>
+                                    <ul>
+                                        <li><a href="#">B.Ed.</a></li>
+                                        <li><a href="#">M.Ed.</a></li>
+                                    </ul>
+                                     <br>
+                                    <h3>Faculty Of Professional / Others</h3>
+                                     <ul>
+                                         <li><a href="#">Soil and Water Conservation</a></li>
+                                     </ul>
+                                      <br>
+                                      <h3>Faculty Of Distance Learning</h3>
+                                       <ul>
+                                           <li><a href="#">IGNOU</a></li>
+                                       </ul>
+                                </div>
+                            </div>
+                        </li>
                     </ul>
                 </li>
                 <li>
@@ -325,199 +861,595 @@
                         <li><a href="#" data-target="hostel">Hostel</a></li>
                         <li><a href="#" data-target="seminar-hall">Seminar Hall</a></li>
                         <li><a href="#" data-target="sports">Sports</a></li>
+                         <!-- Added missing links from footer image -->
+                        <li><a href="#" data-target="computer-center">Computer Center</a></li>
+                        <li><a href="#" data-target="language-lab">Language lab</a></li>
+                        <li><a href="#" data-target="reading-room">Reading Room</a></li>
                     </ul>
                 </li>
                 <li>
                     <a href="#">Student Corner</a>
                     <ul class="dropdown-menu">
                         <li><a href="#" data-target="admission">Admission</a></li>
-                        <li><a href="#" data-target="fee">Fee</a></li>
-                        <li><a href="#" data-target="scheme">Scheme</a></li>
-                        <li><a href="#" data-target="result">Result</a></li>
-                        <li><a href="#" data-target="college-news">College News</a></li>
+                        <li><a href="#" data-target="fee">Fee Structure</a></li>
+                        <li><a href="#" data-target="scheme">Scholarship Schemes</a></li>
+                        <li><a href="#" data-target="result">Examination Results</a></li>
+                        <li><a href="#" data-target="college-news">College News & Events</a></li>
                     </ul>
                 </li>
+                 <!-- *** NEW: Contact Us Link *** -->
+                <li><a href="#" data-target="contact-us">Contact Us</a></li>
             </ul>
         </nav>
-    </div>
+    </header>
 
     <!-- Slideshow Div -->
     <div id="slideshow">
-        <!-- IMPORTANT: Use relative paths or web URLs for images -->
-        <img src="slideshow1.jpg" alt="Slide 1" class="active"> <!-- Example: Changed path -->
-        <img src="slideshow2.jpg"  alt="Slide 2"> <!-- Example: Changed path -->
-        <img src="slideshow_image2.jpg" @alt="Slide 3"> <!-- Example: Changed path -->
+         <img src="https://kisanpgcollege.ac.in/wp-content/uploads/2024/04/DJI_0332-scaled.jpg" alt="College Campus View" class="active">
+         <img src="https://kisanpgcollege.ac.in/wp-content/uploads/2024/03/slider-1-2.jpg" alt="College Event">
+         <img src="https://kisanpgcollege.ac.in/wp-content/uploads/2024/04/DJI_0332-scaled.jpg" alt="College Campus Aerial View">
+         <!-- Add more images if available -->
     </div>
 
     <!-- Content Div -->
-    <div id="content">
-        <div id="home" class="content-section active">
-            <h2>Welcome to Kisan P.G. College</h2>
-            <p>This is the home page content.</p>
-            <p>Our college provides excellent education...</p>
-        </div>
-        <div id="about-us" class="content-section">
+    <main id="content">
+        <!-- Home Section - Initially Active -->
+        <section id="home" class="content-section active">
+
+             <!-- *** NEW: Home Intro Section *** -->
+             
+             <!-- *** END: Home Intro Section *** -->
+
+             <!-- Card Container remains here -->
+             <div class="card-container">
+                <a href="#" class="card" data-target="admission-info">
+                    <i class="fas fa-user-graduate card-icon"></i>
+                    <div class="card-text">Admission<br>2024-25</div>
+                </a>
+                <a href="#" class="card" data-target="admit-card-download">
+                    <i class="fas fa-id-card card-icon"></i>
+                    <div class="card-text">Download<br>Admit Card</div>
+                </a>
+                <a href="#" class="card" data-target="exam-form-portal">
+                     <i class="fas fa-file-signature card-icon"></i>
+                    <div class="card-text">Exam Form<br>2024-25</div>
+                </a>
+                <a href="#" class="card" data-target="activities-info">
+                    <i class="fas fa-bullhorn card-icon"></i>
+                    <div class="card-text">Institutional<br>Other<br>Activities</div>
+                </a>
+                <a href="#" class="card" data-target="fee-payment-portal">
+                     <i class="fas fa-rupee-sign card-icon"></i>
+                    <div class="card-text">Fee Payment</div>
+                </a>
+                <a href="#" class="card" data-target="result-check">
+                    <i class="fas fa-poll card-icon"></i>
+                    <div class="card-text">Result</div>
+                </a>
+            </div>
+            <!-- Original Welcome text can be kept or removed based on preference -->
+            <div class="home-intro">
+                <img src="https://kisanpgcollege.ac.in/wp-content/themes/propertylabtheme/assets/img/about.jpg" alt="Kisan P.G. College Logo" class="logo">
+                <div class="home-intro-text">
+                    <h2>Welcome to Kisan P.G. College, Bahraich (U.P.)</h2>
+                    <p>The institution was established on July Ist 1960, affiliated to Gorakhpur University by the famous Freedom Fighter and Senior Cabinet Minister of U.P. late Thakur Hukum Singh Visen the founder president of the college for the promotion of higher education in the district.
+
+                        The then District Magistrate, Sri Girish Chander Chaturvedi I.A.S. as Vice president-I; Ex M.P. Late Pandit Bhagwaan Deen Vaidya as the Vice president-II of the college; Sri Sardar Jogindar Singh Ex. Governor of Rajasthan; Sri Babu Magan Bihari Lal Srivastava Advocate & Secretary of the college; Sri Bhagwati Singh as Joint Secretary; Dr. J.B. Singh the Founder Principal of the college and many other leading personalities of district extended their whole hearted co-operation for the institution.</p>
+                </div>
+            </div>
+        <!-- *** NEW: Management Section *** -->
+        <div class="management-section">
+            <h2>Key Personnel</h2>
+            <div class="management-cards-container">
+
+                <!-- Card 1: Sri Jata Shankar Singh -->
+                <div class="management-card">
+                    <div class="card-image-container">
+                        <!-- Placeholder Image -->
+                        <img src="https://kisanpgcollege.ac.in/wp-content/themes/propertylabtheme/assets/img/team/team-1.jpg" alt="Sri Jata Shankar Singh">
+                    </div>
+                    <div class="separator-line"></div>
+                    <div class="card-content">
+                        <h3>Sri Jata Shankar Singh</h3>
+                        <p class="designation">Ex-MLA, U.P.</p>
+                        <div class="details">
+                            <p>Ex secretary BJP legislative Party,</p>
+                            <p>Member - National Board BJP,</p>
+                            <p>State Board BJP,</p>
+                            <p>State Executive Committee BJP</p>
+                            <!-- Assuming role like President/Patron - add if known -->
+                            <!-- <p>President, Management Committee</p> -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2: Major (Dr.) S.P. Singh -->
+                <div class="management-card">
+                     <div class="card-image-container">
+                        <!-- Placeholder Image -->
+                        <img src="https://kisanpgcollege.ac.in/wp-content/themes/propertylabtheme/assets/img/team/team-2.jpg" alt="Major (Dr.) S.P. Singh">
+                    </div>
+                    <div class="separator-line"></div>
+                    <div class="card-content">
+                        <h3>Major (Dr.) S.P. Singh</h3>
+                        <p class="designation">Secretary of College</p>
+                         <div class="details">
+                            <p>Ex-Principal of Kisan P. G. College, Bahraich,</p>
+                            <p>Ex-Member College Development, RMLAU,</p>
+                            <p>Ex-Member Executive Committee, RMLAU,</p>
+                            <p>Ex-Member Board of Studies, RMLAU,</p>
+                            <p>Ex-President Seema Jagran Manch (U.P.),</p>
+                            <p>President Lok Bharti, Bahraich(U.P.),</p>
+                            <p>Ex-Associate NCC Officer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3: Professor (Dr.) Vinay Saxena -->
+                <div class="management-card">
+                     <div class="card-image-container">
+                        <!-- Placeholder Image -->
+                        <img src="https://kisanpgcollege.ac.in/wp-content/themes/propertylabtheme/assets/img/team/team-3.jpg" alt="Professor (Dr.) Vinay Saxena">
+                     </div>
+                     <div class="separator-line"></div>
+                    <div class="card-content">
+                        <h3>Professor (Dr.) Vinay Saxena</h3>
+                        <p class="designation">Principal</p>
+                         <div class="details">
+                            <p>M.Sc. (IIT Kanpur),</p>
+                            <p>Ph.D. (GBPUAT Pantnagar)</p>
+                            <!-- Add more details if available -->
+                        </div>
+                    </div>
+                </div>
+
+            </div> <!-- /.management-cards-container -->
+        </div> <!-- /.management-section -->
+        <!-- *** END: Management Section *** -->
+
+    </section> <!-- End of #home section -->
+        
+
+        <!-- Other Content Sections (About, Courses, etc.) -->
+         <section id="about-us" class="content-section">
             <h2>About Us</h2>
-            <p>Kisan P.G. College was established in...</p>
-        </div>
-        <div id="campus-life" class="content-section">
+            <p>Established in [Year], Kisan P.G. College has a long-standing tradition of academic excellence. Our mission is to empower students, particularly from rural backgrounds, with knowledge, skills, and values necessary for personal and professional success.</p>
+            <p>We strive to create an inclusive learning environment that encourages critical thinking, creativity, and social responsibility.</p>
+        </section>
+        <section id="campus-life" class="content-section">
             <h2>Campus Life</h2>
-            <p>Experience vibrant campus life with various clubs and activities.</p>
-        </div>
-        <div id="no-of-students" class="content-section">
+            <p>Experience a vibrant and engaging campus life at Kisan P.G. College. We offer numerous opportunities for students to get involved through various clubs (e.g., Literary Club, Science Club, Cultural Club), sports teams, technical symposiums, and community outreach programs.</p>
+             <p>Regular cultural events, workshops, and guest lectures enrich the student experience beyond academics.</p>
+       </section>
+        <section id="no-of-students" class="content-section">
             <h2>Number of Students</h2>
-            <p>We currently have over [Number] students enrolled across various programs.</p>
-        </div>
-        <div id="courses" class="content-section">
-            <h2>Courses</h2>
-            <p>We offer B.A, B.Sc, M.A, M.Sc in various subjects...</p>
-        </div>
-        <div id="faculty" class="content-section">
-            <h2>Faculty</h2>
-            <p>Our dedicated faculty members are experts in their fields...</p>
-        </div>
-        <div id="syllabus" class="content-section">
+            <p>Kisan P.G. College is home to a diverse student body. Currently, we have approximately [Number, e.g., 2500+] students enrolled across our various undergraduate and postgraduate programs. This dynamic community fosters collaboration and diverse perspectives.</p>
+        </section>
+        <!-- *** Placeholder Sections for new nav links *** -->
+         <section id="vision-mission" class="content-section">
+             <h2>Vision & Mission</h2>
+             <p><strong>Vision:</strong> [Insert College Vision Statement Here]</p>
+             <p><strong>Mission:</strong> [Insert College Mission Statement Here]</p>
+             <p>Our vision and mission drive our commitment to academic excellence, student empowerment, and community engagement.</p>
+         </section>
+          <section id="management-staff" class="content-section">
+             <h2>Management Staff</h2>
+             <p>Details about the college management committee and key personnel will be listed here.</p>
+             <!-- Example: <ul><li>Name - Designation</li></ul> -->
+         </section>
+          <section id="administrative-staff" class="content-section">
+             <h2>Administrative Staff</h2>
+             <p>Information about the principal's office, accounts, library, and other administrative staff members.</p>
+              <!-- Example: <ul><li>Name - Designation - Department</li></ul> -->
+         </section>
+         <section id="ignou-info" class="content-section">
+             <h2>IGNOU Study Centre</h2>
+             <p>Kisan P.G. College hosts a study centre for the Indira Gandhi National Open University (IGNOU), offering various distance learning programs.</p>
+             <p>Contact the IGNOU coordinator at the college for details on available courses and admission procedures.</p>
+         </section>
+         <section id="professional-courses" class="content-section">
+             <h2>Professional Courses</h2>
+             <p>Details about any professional or vocational courses offered by the college beyond the traditional degree programs.</p>
+             <!-- Example: <ul><li>Course Name - Duration - Eligibility</li></ul> -->
+         </section>
+         <section id="teacher-education" class="content-section">
+             <h2>Teacher Education (B.Ed. / M.Ed.)</h2>
+             <p>Information specific to the B.Ed. and M.Ed. programs, including intake capacity, faculty, infrastructure, and NCTE recognition details.</p>
+         </section>
+         <section id="computer-center" class="content-section">
+            <h2>Computer Center</h2>
+            <p>The college provides a well-equipped computer center with internet connectivity for students to enhance their IT skills and access online resources.</p>
+        </section>
+        <section id="language-lab" class="content-section">
+            <h2>Language Lab</h2>
+            <p>A dedicated language lab facility is available to help students improve their communication and language proficiency skills through specialized software and resources.</p>
+        </section>
+        <section id="reading-room" class="content-section">
+            <h2>Reading Room</h2>
+            <p>In addition to the main library, a separate reading room provides a peaceful environment for students to study.</p>
+        </section>
+         <!-- *** END Placeholder Sections *** -->
+
+        <section id="courses" class="content-section">
+            <h2>Courses Offered</h2>
+            <p>We offer a comprehensive range of programs affiliated with [Affiliating University Name, e.g., Dr. Ram Manohar Lohia Avadh University, Ayodhya].</p>
+            <ul>
+                <li><strong>Undergraduate Programs:</strong> Bachelor of Arts (B.A.), Bachelor of Science (B.Sc.), Bachelor of Commerce (B.Com) with various specializations.</li>
+                <li><strong>Postgraduate Programs:</strong> Master of Arts (M.A.), Master of Science (M.Sc.) in select disciplines.</li>
+                <li><strong>Teacher Education:</strong> B.Ed., M.Ed.</li>
+                <li><strong>Other Programs:</strong> IGNOU Courses, [List others if applicable]</li>
+            </ul>
+             <p>Detailed information on specific courses, eligibility criteria, and course duration can be found in the <a href="#" data-target="admission">Admission section</a> or the college prospectus.</p>
+             <p>You can explore the departments within each faculty using the 'Faculty' menu above.</p>
+        </section>
+        <section id="syllabus" class="content-section">
             <h2>Syllabus</h2>
-            <p>Download the latest syllabus for all courses here...</p>
-        </div>
-        <div id="library" class="content-section">
-            <h2>Library</h2>
-            <p>Our library boasts a vast collection of books and digital resources.</p>
-        </div>
-        <div id="gymnasium" class="content-section">
+            <p>The syllabus for all courses follows the guidelines prescribed by [Affiliating University Name]. Updated syllabi for the current academic session can typically be downloaded from the university website or accessed through the respective departments.</p>
+             <p>[Optional: Add a direct link here if the college hosts syllabus PDFs, e.g., <a href='#' target='_blank'>Download Syllabi</a>]</p>
+       </section>
+        <section id="library" class="content-section">
+            <h2>Library & Resource Center</h2>
+            <p>Our central library is a hub of knowledge, housing a vast collection of textbooks, reference materials, academic journals, periodicals, magazines, and newspapers. We also provide access to digital resources and e-journals.</p>
+            <p>The library offers a quiet and conducive environment for study and research, equipped with reading areas and computer facilities.</p>
+        </section>
+        <section id="gymnasium" class="content-section">
             <h2>Gymnasium</h2>
-            <p>Stay fit with our well-equipped gymnasium.</p>
-        </div>
-        <div id="hostel" class="content-section">
-            <h2>Hostel</h2>
-            <p>Comfortable and secure hostel facilities are available for students.</p>
-        </div>
-        <div id="seminar-hall" class="content-section">
+            <p>We encourage physical fitness and well-being. The college has a well-equipped gymnasium with modern fitness machines and equipment, accessible to both students and staff during specified hours under the guidance of a trainer.</p>
+        </section>
+        <section id="hostel" class="content-section">
+            <h2>Hostel Facilities</h2>
+            <p>To accommodate students from distant locations, the college provides separate, secure, and comfortable hostel facilities for boys and girls. Hostels are equipped with essential amenities, including mess facilities providing hygienic food, common rooms, and recreational options.</p>
+            <p>Admission to the hostel is based on specific criteria and availability.</p>
+        </section>
+        <section id="seminar-hall" class="content-section">
             <h2>Seminar Hall</h2>
-            <p>A modern seminar hall for workshops and guest lectures.</p>
+            <p>The college features a modern, air-conditioned seminar hall equipped with state-of-the-art audio-visual technology, including projectors and sound systems. It serves as an ideal venue for conducting seminars, workshops, guest lectures, conferences, and other academic and cultural events.</p>
+        </section>
+        <section id="sports" class="content-section">
+            <h2>Sports & Recreation</h2>
+            <p>Kisan P.G. College promotes sports and games for the all-round development of students. We have extensive grounds and facilities for various outdoor sports like cricket, volleyball, football, kabaddi, and athletics, as well as provisions for indoor games like badminton, table tennis, chess, and carrom.</p>
+            <p>Inter-college and intra-college tournaments are organized regularly.</p>
+        </section>
+        <section id="admission" class="content-section">
+            <h2>Admission Process</h2>
+            <p>Information regarding the admission process for the upcoming academic session [e.g., 2024-25] will be updated here. This typically includes:</p>
+            <ul>
+                <li>Notification Dates</li>
+                <li>Eligibility Criteria for various courses</li>
+                <li>Application Procedure (Online/Offline)</li>
+                <li>Required Documents</li>
+                <li>Merit List / Entrance Test details (if applicable)</li>
+                <li>Important Deadlines</li>
+            </ul>
+            <p>Please check this section regularly or contact the admission office for the latest updates. [Link to specific admission portal or contact info]</p>
+        </section>
+        <section id="fee" class="content-section">
+            <h2>Fee Structure</h2>
+            <p>The detailed fee structure for all undergraduate and postgraduate courses for the academic session [e.g., 2024-25] will be provided here soon. It will include tuition fees, examination fees, library fees, and other applicable charges.</p>
+            <p>Information regarding payment modes (online/offline) and deadlines will also be available. [Link to Fee PDF or Details Page]</p>
+        </section>
+        <section id="scheme" class="content-section">
+            <h2>Scholarship Schemes</h2>
+            <p>The college facilitates various scholarship schemes offered by the central government, state government, and other agencies to support eligible students financially.</p>
+             <p>Information regarding different schemes (e.g., Post Matric Scholarship, Merit-cum-Means Scholarship), eligibility criteria, and application procedures will be available through the college office or relevant government portals.</p>
+       </section>
+        <section id="result" class="content-section">
+            <h2>Examination Results</h2>
+            <p>Semester and annual examination results are typically declared by the affiliating university, [Affiliating University Name]. Students can usually check their results on the official university examination portal.</p>
+             <p>Links to the result portal and relevant notifications will be provided here when available. [Link to University Results Portal]</p>
+       </section>
+        <section id="college-news" class="content-section">
+            <h2>College News & Events</h2>
+            <p>Stay informed about the latest happenings, achievements, upcoming events, workshops, seminars, and important announcements at Kisan P.G. College.</p>
+            <p>[Placeholder: This section can be dynamically updated with news items or link to a dedicated news page/notice board section]</p>
+            <ul>
+                <li>[Example News Item 1: Date - Event Name]</li>
+                <li>[Example News Item 2: Date - Announcement]</li>
+            </ul>
+        </section>
+
+        <!-- Content Sections for Dashboard Cards -->
+        <section id="admission-info" class="content-section">
+            <h2>Admission Information (2024-25)</h2>
+            <p>Welcome to the Admission section for the academic year 2024-25. Find all necessary information regarding application forms, eligibility criteria, important dates, and procedures below.</p>
+            <p><strong>Current Status:</strong> [e.g., Admissions are now open / Admissions will open soon in Month, Year]</p>
+            <ul>
+                <li><a href="#">Download Prospectus 2024-25</a> (Link inactive)</li>
+                <li><a href="#">Apply Online</a> (Link inactive)</li>
+                <li><a href="#">Eligibility Criteria</a> (Link inactive)</li>
+                <li><a href="#">Important Dates</a> (Link inactive)</li>
+            </ul>
+            <p>For any queries, please contact the Admission Cell at [Phone Number] or [Email Address].</p>
+        </section>
+        <section id="admit-card-download" class="content-section">
+            <h2>Download Admit Card</h2>
+            <p>Admit cards for upcoming examinations [Specify Exam Name/Session, e.g., Semester End Exams - May 2024] will be available for download here.</p>
+            <p>Please enter your registration number or other required details to download your admit card.</p>
+            <p>[Placeholder: Input fields for Roll Number/Registration Number and a Download Button would go here, or a link to the download portal.]</p>
+            <p><a href="#">Click here to access the Admit Card Portal</a> (Link inactive)</p>
+            <p><strong>Note:</strong> Admit cards are mandatory for appearing in the examination.</p>
+        </section>
+        <section id="exam-form-portal" class="content-section">
+            <h2>Examination Form (2024-25)</h2>
+            <p>Students are required to fill out the examination form for [Specify Exam Session, e.g., the upcoming semester/annual examinations].</p>
+            <p><strong>Deadline for form submission:</strong> [Date]</p>
+            <p>Please access the portal below to complete your examination form submission online.</p>
+             <p>[Placeholder: Link to the online examination form portal.]</p>
+           <p><a href="#">Go to Examination Form Portal</a> (Link inactive)</p>
+            <p>Ensure all details are filled correctly before submission. Contact the examination cell for assistance.</p>
+        </section>
+        <section id="activities-info" class="content-section">
+            <h2>Institutional & Other Activities</h2>
+            <p>Kisan P.G. College encourages participation in a wide range of institutional, co-curricular, and extra-curricular activities throughout the academic year.</p>
+            <p><strong>Upcoming Events:</strong></p>
+            <ul>
+                <li>[Event Name] - [Date]</li>
+                <li>[Workshop Name] - [Date]</li>
+                <li>[Sports Meet] - [Date Range]</li>
+            </ul>
+             <p><strong>Regular Activities:</strong></p>
+             <ul>
+                 <li>NSS / NCC Activities</li>
+                 <li>Debate and Quiz Competitions</li>
+                 <li>Cultural Programs</li>
+                 <li>Guest Lectures</li>
+             </ul>
+             <p>Check the <a href="#" data-target="college-news">College News</a> section or the notice board for detailed schedules and updates.</p>
+       </section>
+        <section id="fee-payment-portal" class="content-section">
+            <h2>Fee Payment</h2>
+            <p>This portal allows you to pay your college fees online securely.</p>
+            <p>Please select the type of fee you wish to pay (e.g., Tuition Fee, Hostel Fee, Examination Fee) and follow the instructions.</p>
+            <p>You will need your Student ID or Registration Number.</p>
+            <p>[Placeholder: Integration with a payment gateway or link to the payment portal.]</p>
+            <p><a href="#">Proceed to Online Fee Payment</a> (Link inactive)</p>
+            <p>For offline payment options or fee-related queries, please contact the accounts office.</p>
+        </section>
+        <section id="result-check" class="content-section">
+            <h2>Check Examination Result</h2>
+            <p>Find the links to check your examination results here. Results are usually published on the affiliating university's portal.</p>
+            <p><strong>Latest Declared Results:</strong></p>
+             <ul>
+                 <li>[Exam Name - Session] - <a href="#">Check Result</a> (Link inactive)</li>
+                 <li>[Exam Name - Session] - <a href="#">Check Result</a> (Link inactive)</li>
+             </ul>
+             <p>You will typically need your Roll Number and Date of Birth to view your result.</p>
+             <p><strong>Link to University Result Portal:</strong> <a href="[UniversityResultPortalLink]" target="_blank" rel="noopener noreferrer">[University Name] Examination Results</a> (Replace with actual link)</p>
+       </section>
+
+        <!-- *** NEW: Contact Us Section *** -->
+        <section id="contact-us" class="content-section">
+            <h2>Contact Us</h2>
+            <p>We are here to help. Please feel free to reach out to us through any of the following methods:</p>
+            <div class="contact-info">
+                <p>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <strong>Address:</strong> Kisan P.G. College, Bahraich (U.P.) - 271801, India.
+                </p>
+                <p>
+                    <i class="fas fa-phone"></i>
+                     <strong>Phone:</strong> <a href="tel:05252232824">05252-232824</a>
+                     <!-- Add more numbers if available -->
+                </p>
+                 <p>
+                    <i class="fas fa-envelope"></i>
+                    <strong>Email:</strong> <a href="mailto:principalkpgc@yahoo.co.in">principalkpgc@yahoo.co.in</a>
+                     <!-- Add other relevant emails if available -->
+                </p>
+                 <p>
+                    <i class="fas fa-globe"></i>
+                    <strong>Website:</strong> <a href="https://kisanpgcollege.ac.in/" target="_blank" rel="noopener noreferrer">kisanpgcollege.ac.in</a>
+                </p>
+            </div>
+            <p><strong>Office Hours:</strong> Monday to Saturday, 10:00 AM - 04:00 PM (IST)</p>
+
+            <!-- Optional: Google Map Embed -->
+            <!--
+            <div class="map-container" style="margin-top: 20px; border: 1px solid var(--border-color); padding: 5px;">
+                 <iframe
+                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d[YOUR_LAT_LONG_DETAILS_HERE]!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x[YOUR_MAP_ID_HERE]!2sKisan%20PG%20College%2C%20Bahraich!5e0!3m2!1sen!2sin!4v[TIMESTAMP]"
+                     width="100%"
+                     height="350"
+                     style="border:0;"
+                     allowfullscreen=""
+                     loading="lazy"
+                     referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+            -->
+            <!-- Optional: Simple Contact Form (requires backend) -->
+            <!--
+             <form action="#" method="post" style="margin-top: 20px;">
+                 <h3>Send us a Message</h3>
+                 <div style="margin-bottom: 10px;"><label for="name">Name:</label><input type="text" id="name" name="name" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"></div>
+                 <div style="margin-bottom: 10px;"><label for="email">Email:</label><input type="email" id="email" name="email" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"></div>
+                 <div style="margin-bottom: 10px;"><label for="message">Message:</label><textarea id="message" name="message" rows="4" required style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;"></textarea></div>
+                 <button type="submit" style="padding: 10px 20px; background-color: var(--primary-color); color: white; border: none; border-radius: 4px; cursor: pointer;">Send</button>
+             </form>
+            -->
+        </section>
+         <!-- *** END: Contact Us Section *** -->
+
+    </main>
+
+    <!-- *** NEW: Footer Section *** -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-column">
+                <h3>Kisan P.G. College</h3>
+                <address>
+                    Bahraich (U.P.)<br>
+                    271801, India.
+                 </address>
+                 <p>
+                    <strong>Phone:</strong> <a href="tel:05252232824">05252-232824</a> <br>
+                    <strong>Email:</strong> <a href="mailto:principalkpgc@yahoo.co.in">principalkpgc@yahoo.co.in</a>
+                 </p>
+            </div>
+            <div class="footer-column">
+                 <h3>About</h3>
+                 <ul>
+                     <li><a href="#" data-target="home">Home</a></li>
+                     <li><a href="#" data-target="about-us">About us</a></li>
+                     <li><a href="#" data-target="vision-mission">Vision & Mission</a></li>
+                     <li><a href="#" data-target="management-staff">Management Staff</a></li>
+                     <li><a href="#" data-target="administrative-staff">Administrative Staff</a></li>
+                 </ul>
+            </div>
+            <div class="footer-column">
+                 <h3>Courses</h3>
+                 <ul>
+                    <li><a href="#" data-target="courses">Ug Program</a></li> <!-- Assuming generic link -->
+                    <li><a href="#" data-target="courses">Pg Program</a></li> <!-- Assuming generic link -->
+                    <li><a href="#" data-target="ignou-info">Ignou</a></li>
+                    <li><a href="#" data-target="professional-courses">Professional</a></li>
+                    <li><a href="#" data-target="teacher-education">Teacher Education</a></li>
+                </ul>
+                 <h3 style="margin-top: 20px;">Facilities</h3> <!-- Added margin-top for spacing -->
+                 <ul>
+                    <li><a href="#" data-target="computer-center">Computer Center</a></li>
+                    <li><a href="#" data-target="seminar-hall">Seminar hall</a></li>
+                    <li><a href="#" data-target="language-lab">Language lab</a></li>
+                    <li><a href="#" data-target="hostel">Hostel</a></li>
+                    <li><a href="#" data-target="reading-room">Reading Room</a></li>
+                </ul>
+            </div>
+            <div class="footer-column social-networks">
+                <h3>Our Social Networks</h3>
+                 <p>You can get in touch with our office Social Networks</p>
+                 <div class="social-icons">
+                     <a href="#" class="twitter" aria-label="Twitter" target="_blank" rel="noopener noreferrer"><i class="fab fa-twitter"></i></a>
+                     <a href="#" class="facebook" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                     <a href="#" class="linkedin" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
+                     <!-- Add more social links as needed -->
+                 </div>
+            </div>
         </div>
-        <div id="sports" class="content-section">
-            <h2>Sports</h2>
-            <p>Extensive grounds and facilities for various sports.</p>
-        </div>
-        <div id="admission" class="content-section">
-            <h2>Admission</h2>
-            <p>Admission process starts in [Month]. Check eligibility criteria...</p>
-        </div>
-        <div id="fee" class="content-section">
-            <h2>Fee</h2>
-            <p>Details about the course-wise fee structure...</p>
-        </div>
-        <div id="scheme" class="content-section">
-            <h2>Scheme</h2>
-            <p>Information about scholarship schemes available...</p>
-        </div>
-        <div id="result" class="content-section">
-            <h2>Result</h2>
-            <p>Check your examination results online here...</p>
-        </div>
-        <div id="college-news" class="content-section">
-            <h2>College News</h2>
-            <p>Stay updated with the latest happenings at the college.</p>
-        </div>
-    </div>
+         <div class="footer-bottom">
+             © 2024 Kisan P.G. College, Bahraich. All Rights Reserved.
+             <!-- Optional: Add designer credit -->
+             <!-- Designed by [Your Name/Company] -->
+         </div>
+    </footer>
+     <!-- *** END: Footer Section *** -->
+
 
     <script>
-        // --- Slideshow Script ---
-        const slides = document.querySelectorAll('#slideshow img');
-        const slideshowElement = document.getElementById('slideshow'); // Get slideshow container
-        let currentIndex = 0;
-        const totalSlides = slides.length;
-        let slideshowInterval; // Store the interval ID
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Slideshow Script ---
+            const slides = document.querySelectorAll('#slideshow img');
+            const slideshowElement = document.getElementById('slideshow');
+            let currentIndex = 0;
+            const totalSlides = slides.length;
+            let slideshowInterval = null;
 
-        function showNextSlide() {
-            if (slides.length === 0) return; // Don't run if no slides
-            slides[currentIndex].classList.remove('active');
-            currentIndex = (currentIndex + 1) % totalSlides;
-            slides[currentIndex].classList.add('active');
-        }
-
-        // Function to start the slideshow
-        function startSlideshow() {
-            // Clear any existing interval before starting a new one
-            stopSlideshow();
-            if (slides.length > 1) { // Only start if more than one slide
-               slideshowInterval = setInterval(showNextSlide, 3000);
+            function showNextSlide() {
+                if (slides.length === 0 || !slideshowElement || slideshowElement.style.display === 'none') {
+                    stopSlideshow(); return;
+                }
+                 if (slides.length > 0) { // Check if slides exist
+                    slides[currentIndex].classList.remove('active');
+                    currentIndex = (currentIndex + 1) % totalSlides;
+                    slides[currentIndex].classList.add('active');
+                }
             }
-        }
+            function startSlideshow() {
+                stopSlideshow();
+                if (slides.length > 1 && slideshowElement && slideshowElement.style.display !== 'none') {
+                   slideshowInterval = setInterval(showNextSlide, 3000);
+                }
+            }
+            function stopSlideshow() {
+                if (slideshowInterval) {
+                    clearInterval(slideshowInterval);
+                    slideshowInterval = null;
+                }
+            }
 
-        // Function to stop the slideshow
-        function stopSlideshow() {
-            clearInterval(slideshowInterval);
-        }
+            // --- SPA Navigation Script ---
+            const clickableLinks = document.querySelectorAll('a[data-target]'); // Links that trigger section changes
+            const contentSections = document.querySelectorAll('.content-section');
+            const homeSection = document.getElementById('home');
+            const mainContentArea = document.getElementById('content'); // Reference to the main content area
 
-        // --- SPA Navigation Script ---
-        const navLinks = document.querySelectorAll('nav a[data-target]'); // More specific selector
-        const contentSections = document.querySelectorAll('.content-section');
-        const homeSection = document.getElementById('home');
+            function switchSection(targetId) {
+                 if (!targetId) return;
 
-        navLinks.forEach(link => {
-            link.addEventListener('click', (event) => {
-                event.preventDefault(); // Prevent default anchor behavior
-                const targetId = link.dataset.target;
-                if (!targetId) return; // Do nothing if no data-target
+                 // Scroll main content area to top before switching
+                if (mainContentArea) {
+                    // Use smooth scroll if preferred, otherwise just set scrollTop
+                    // mainContentArea.scrollTo({ top: 0, behavior: 'smooth' }); // Less reliable across browsers maybe
+                    mainContentArea.scrollTop = 0; // Immediate jump
+                    // Or scroll the window if main area isn't the scrolling container
+                    window.scrollTo(0, 0);
+                }
 
-                // Hide all content sections
-                contentSections.forEach(section => {
-                    section.classList.remove('active');
-                });
 
-                // Show the target content section
+                contentSections.forEach(section => section.classList.remove('active'));
                 const targetSection = document.getElementById(targetId);
+
                 if (targetSection) {
                     targetSection.classList.add('active');
 
-                    // *** CORE FIX: Show/Hide Slideshow based on target ***
+                    // Slideshow logic
                     if (targetId === 'home') {
-                        slideshowElement.style.display = 'block'; // Or 'relative' if needed
-                        startSlideshow(); // Start slideshow only for home page
+                        if (slideshowElement) slideshowElement.style.display = 'block';
+                        startSlideshow();
                     } else {
-                        slideshowElement.style.display = 'none'; // Hide slideshow
-                        stopSlideshow(); // Stop slideshow on other pages
+                        if (slideshowElement) slideshowElement.style.display = 'none';
+                        stopSlideshow();
                     }
                 } else {
-                    // Optional: Handle case where target section doesn't exist
-                    console.warn(`Target section #${targetId} not found.`);
-                    // Maybe show home or an error message
-                     homeSection.classList.add('active');
-                     slideshowElement.style.display = 'block';
-                     startSlideshow();
-                }
-            });
-        });
-
-        // --- Initial Page Load ---
-        // Check which section should be active initially (based on HTML 'active' class)
-        let activeSectionFound = false;
-        contentSections.forEach(section => {
-            if (section.classList.contains('active')) {
-                activeSectionFound = true;
-                if (section.id === 'home') {
-                    slideshowElement.style.display = 'block'; // Show slideshow
-                    startSlideshow(); // Start it
-                } else {
-                    slideshowElement.style.display = 'none'; // Hide slideshow
-                    stopSlideshow(); // Ensure it's stopped
+                    console.warn(`Target section #${targetId} not found. Showing home.`);
+                    if(homeSection) {
+                        homeSection.classList.add('active');
+                        if (slideshowElement) slideshowElement.style.display = 'block';
+                        startSlideshow();
+                    } else {
+                         if (slideshowElement) slideshowElement.style.display = 'none';
+                         stopSlideshow();
+                    }
                 }
             }
-        });
 
-        // Fallback if no section has 'active' class in HTML (shouldn't happen with current HTML)
-        if (!activeSectionFound && homeSection) {
-             homeSection.classList.add('active');
-             slideshowElement.style.display = 'block';
-             startSlideshow();
-        } else if (!activeSectionFound) {
-            // If even homeSection doesn't exist, hide slideshow
-             slideshowElement.style.display = 'none';
-        }
+            clickableLinks.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    if(link.dataset.target) {
+                         event.preventDefault();
+                         const targetId = link.dataset.target;
+                         switchSection(targetId);
+                     }
+                     // Allow default for links without data-target (like external links, tel:, mailto:)
+                     // Note: Added target="_blank" etc. to external links and tel/mailto for correct behavior
+                });
+            });
 
+            // --- Initial Page Load Logic ---
+            let initialTarget = 'home'; // Always start with home
+             // Check hash on load for deep linking (optional)
+            if (window.location.hash) {
+                const hashTarget = window.location.hash.substring(1); // Remove #
+                if (document.getElementById(hashTarget)) {
+                    initialTarget = hashTarget;
+                }
+            }
+
+            switchSection(initialTarget);
+             if (initialTarget === 'home' && homeSection && homeSection.classList.contains('active')) {
+                 if (slideshowElement && slides.length > 0) { // Only show/start slideshow if images exist
+                     slideshowElement.style.display = 'block';
+                     startSlideshow();
+                 } else if (slideshowElement) {
+                     slideshowElement.style.display = 'none'; // Hide if no images
+                 }
+             } else {
+                 if (slideshowElement) {
+                     slideshowElement.style.display = 'none';
+                     stopSlideshow();
+                 }
+             }
+
+        }); // End DOMContentLoaded
     </script>
 </body>
-
 </html>
