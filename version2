@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innovate University - Welcome</title>
+    <!-- Font Awesome CDN (for icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* --- Global Styles & Variables --- */
+        :root {
+            --primary-color: #003366; /* Deep Blue */
+            --secondary-color: #f0ad4e; /* Gold/Yellow */
+            --accent-color: #d9534f; /* Soft Red */
+            --light-gray: #f8f9fa;
+            --medium-gray: #e9ecef;
+            --dark-gray: #343a40;
+            --text-color: #333;
+            --header-height: 70px;
+            --font-main: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --font-heading: Georgia, 'Times New Roman', Times, serif;
+            --border-radius: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--header-height); /* Offset for fixed header */
+        }
+
+        body {
+            font-family: var(--font-main);
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #fff;
+            overflow-x: hidden; /* Prevent horizontal scroll caused by animations */
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 0 20px;
+            overflow: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--secondary-color);
+            display: inline-block;
+        }
+
+        .section-title {
+             text-align: center;
+             margin-bottom: 3rem; /* Increased margin */
+        }
+        .section-title p { /* Optional subtitle */
+            max-width: 700px;
+            margin: 0 auto;
+            color: #555;
+            font-size: 1.1rem;
+        }
+
+        section {
+            padding: 70px 0; /* Increased padding */
+        }
+
+        section:nth-child(even) {
+            background-color: var(--light-gray);
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            border-radius: var(--border-radius); /* Add slight radius to all images */
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: #fff !important; /* Ensure text is white */
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .btn:hover {
+            background-color: #e69500; /* Darker gold */
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+        }
+        .btn-primary:hover {
+            background: #002244; /* Darker blue */
+        }
+
+
+        /* --- Header & Navigation --- */
+        .main-header {
+            background-color: #fff;
+            color: var(--primary-color);
+            height: var(--header-height);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        .main-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 100%;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+         .logo span { color: var(--secondary-color); }
+
+        .main-nav ul { display: flex; }
+        .main-nav ul li { margin-left: 25px; }
+        .main-nav ul li a {
+            color: var(--primary-color);
+            padding: 5px 0;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+        .main-nav ul li a::after {
+            content: ''; position: absolute; width: 0; height: 2px;
+            bottom: -2px; left: 0; background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+         .main-nav ul li a:hover::after, .main-nav ul li a.active::after { width: 100%; }
+        .main-nav ul li a:hover, .main-nav ul li a.active { color: var(--secondary-color); }
+
+
+        /* --- Mobile Navigation --- */
+        .menu-toggle { display: none; background: none; border: none; cursor: pointer; padding: 10px; }
+        .menu-toggle .bar { display: block; width: 25px; height: 3px; background-color: var(--primary-color); margin: 5px auto; transition: all 0.3s ease-in-out; }
+
+        /* --- Hero Section --- */
+        #hero {
+            background: linear-gradient(rgba(0, 51, 102, 0.75), rgba(0, 51, 102, 0.75)),
+                        url('https://placehold.co/1920x800/003366/FFF?text=InnovateU+Campus') no-repeat center center/cover;
+            color: #fff;
+            height: calc(100vh - var(--header-height));
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            margin-top: var(--header-height);
+            position: relative;
+            overflow: hidden; /* Contain potential pseudo-elements */
+        }
+        /* Optional: subtle pattern overlay */
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            /* background-image: url('data:image/svg+xml,...'); */ /* Add subtle pattern if desired */
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            position: relative; /* Above overlay */
+            z-index: 1;
+            /* Entrance animation */
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease 0.5s forwards;
+        }
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #hero h1 { font-size: 3.5rem; margin-bottom: 1rem; color: #fff; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        #hero p { font-size: 1.3rem; margin-bottom: 2rem; }
+        #hero .btn { margin: 0 10px; }
+
+        /* --- About Section --- */
+        #about .container { display: flex; gap: 40px; align-items: center; }
+        #about .about-content { flex: 1; }
+        #about .about-image { flex: 1; max-width: 450px; border-radius: var(--border-radius); overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+
+        /* --- Programs Section --- */
+        .program-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 2rem;
+        }
+
+        .program-card {
+            background: #fff;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* Lighter shadow */
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            position: relative; /* For overlay */
+        }
+
+        .program-card:hover {
+            transform: translateY(-8px); /* More lift */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .program-card .program-image-wrapper {
+            position: relative;
+            overflow: hidden;
+            height: 200px; /* Fixed height */
+        }
+        .program-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+            border-radius: 0; /* Remove radius from image itself */
+            border-top-left-radius: var(--border-radius);
+            border-top-right-radius: var(--border-radius);
+
+        }
+        .program-card:hover img {
+             transform: scale(1.1); /* Zoom effect */
+        }
+
+        /* Hover Overlay */
+        .program-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: rgba(0, 51, 102, 0.7); /* Primary color overlay */
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none; /* Allow clicks to pass through if needed */
+        }
+        .program-card:hover .program-overlay {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .program-overlay i { font-size: 2rem; margin-bottom: 0.5rem;}
+        .program-overlay p { color: #fff; font-weight: bold; font-size: 1.1rem; margin: 0; }
+
+        .program-card-content { padding: 25px 20px; }
+        .program-card h3 { margin-top: 0; margin-bottom: 0.5rem; color: var(--primary-color); font-size: 1.4rem; }
+        .program-card p { font-size: 0.95rem; margin-bottom: 1rem; color: #555; }
+        .program-card .btn-small { padding: 8px 15px; font-size: 0.9rem; }
+
+        /* --- Animated Stats Section --- */
+        #stats {
+            background-color: var(--primary-color);
+            color: #fff;
+            padding: 50px 0;
+            text-align: center;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            margin-top: 2rem;
+            max-width: 800px; /* Center the grid */
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .stat-item {
+             background: rgba(255, 255, 255, 0.1);
+             padding: 25px 15px;
+             border-radius: var(--border-radius);
+             transition: background-color 0.3s ease;
+        }
+        .stat-item:hover {
+             background: rgba(255, 255, 255, 0.2);
+        }
+        .stat-item .counter {
+            font-size: 2.8rem;
+            font-weight: bold;
+            display: block;
+            color: var(--secondary-color);
+            line-height: 1.1;
+        }
+        .stat-item p {
+            font-size: 1rem;
+            margin-top: 5px;
+            color: var(--light-gray);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- Admissions Section --- */
+        #admissions { text-align: center; background-color: var(--medium-gray); }
+        #admissions p { max-width: 700px; margin: 0 auto 2rem auto; }
+        #admissions .btn { margin: 0 10px; }
+
+        /* --- Testimonials Section --- */
+        #testimonials { background-color: #fff; }
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 2rem;
+        }
+        .testimonial-card {
+            background-color: var(--light-gray);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            border-left: 5px solid var(--secondary-color);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+            position: relative; /* For quote icon */
+        }
+        .testimonial-card::before { /* Quote icon */
+            content: '\f10d'; /* Font Awesome quote-left */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            font-size: 2rem;
+            color: var(--secondary-color);
+            opacity: 0.2;
+        }
+        .testimonial-quote {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+        .testimonial-author { display: flex; align-items: center; }
+        .testimonial-author img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            border: 2px solid var(--secondary-color);
+        }
+        .testimonial-author-info h4 { font-size: 1.1rem; margin-bottom: 0.2rem; color: var(--primary-color); }
+        .testimonial-author-info span { font-size: 0.9rem; color: #666; }
+
+        /* --- Campus Life Section --- */
+        .campus-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin-top: 2rem;
+        }
+        .campus-gallery .gallery-item img {
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            cursor: pointer; /* Indicate clickable */
+        }
+         .campus-gallery .gallery-item img:hover {
+             transform: scale(1.05);
+             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+         }
+
+        /* --- Simple Image Lightbox/Modal --- */
+        .lightbox {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1001;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.85); /* Darker overlay */
+            justify-content: center;
+            align-items: center;
+        }
+        .lightbox-content {
+            margin: auto;
+            display: block;
+            max-width: 85%;
+            max-height: 85%;
+            animation: zoomIn 0.4s ease;
+        }
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 25px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            line-height: 1;
+        }
+        .lightbox-close:hover, .lightbox-close:focus { color: #bbb; }
+
+        /* --- Events Section --- */
+        #events { background-color: var(--medium-gray); }
+        .events-list {
+            max-width: 800px;
+            margin: 2rem auto 0 auto;
+            background: #fff;
+            padding: 20px 30px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.07);
+        }
+        .event-item {
+            display: flex;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .event-item:last-child { border-bottom: none; }
+        .event-date {
+            background: var(--primary-color);
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            margin-right: 20px;
+            min-width: 60px;
+        }
+        .event-date .month { font-size: 0.8rem; text-transform: uppercase; display: block; }
+        .event-date .day { font-size: 1.5rem; font-weight: bold; display: block; line-height: 1; }
+        .event-details h4 { margin-bottom: 0.3rem; font-size: 1.1rem; }
+        .event-details p { margin-bottom: 0; color: #666; font-size: 0.9rem; }
+        .event-details i { margin-right: 5px; color: var(--secondary-color); }
+
+        /* --- Contact Section --- */
+        #contact .container { display: flex; gap: 40px; align-items: flex-start; }
+        .contact-info, .contact-form-container { flex: 1; }
+        .contact-info p { margin-bottom: 1.2rem; display: flex; align-items: flex-start; }
+        .contact-info i {
+            margin-right: 15px;
+            color: var(--primary-color);
+            width: 20px; /* Ensure alignment */
+            display: inline-block;
+            font-size: 1.2rem;
+            margin-top: 3px; /* Align icon better with text */
+        }
+        .contact-info .info-content { flex: 1; } /* Allow text to wrap */
+        .contact-info strong { display: block; margin-bottom: 3px; }
+
+        .contact-form h3 { margin-top: 0; text-align: left; }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%; padding: 12px; margin-bottom: 15px;
+            border: 1px solid #ccc; border-radius: 4px; font-family: var(--font-main);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+             border-color: var(--primary-color);
+             outline: none;
+             box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.15);
+        }
+        /* Basic required field styling */
+        .contact-form input:required:invalid,
+        .contact-form textarea:required:invalid {
+             border-color: var(--accent-color);
+         }
+         .contact-form input:required:valid,
+         .contact-form textarea:required:valid {
+              border-color: #28a745; /* Green border for valid */
+         }
+
+        .contact-form textarea { height: 150px; resize: vertical; }
+        .contact-form button { width: 100%; padding: 15px; }
+        .form-note { font-size: 0.8em; margin-top: 10px; color: #666; text-align: center; }
+
+        /* --- Footer --- */
+        .main-footer {
+            background-color: var(--dark-gray);
+            color: var(--light-gray);
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+        }
+        .main-footer p { margin-bottom: 0.5rem; }
+        .main-footer a { color: var(--secondary-color); }
+        .main-footer a:hover { color: #fff; text-decoration: underline;}
+        .footer-social-links { margin-top: 1rem; }
+        .footer-social-links a {
+            color: var(--light-gray);
+            margin: 0 10px;
+            font-size: 1.4rem;
+            transition: color 0.3s ease;
+        }
+        .footer-social-links a:hover { color: var(--secondary-color); }
+
+        /* --- Back to Top Button --- */
+        #back-to-top {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            line-height: 50px; /* Center icon vertically */
+            text-align: center;
+            cursor: pointer;
+            opacity: 0; /* Hidden by default */
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease, background-color 0.3s ease;
+            z-index: 998;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        #back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        #back-to-top:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* --- Scroll Animations --- */
+        .fade-in-element {
+            opacity: 0;
+            transform: translateY(30px); /* Start slightly below */
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-element.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 992px) {
+             h2 { font-size: 2rem; }
+             #hero h1 { font-size: 3rem; }
+             #hero p { font-size: 1.1rem; }
+             .program-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+             #about .container, #contact .container { flex-direction: column; text-align: center;}
+             #about .about-image { margin-top: 30px; max-width: 100%; }
+             .contact-form-container { margin-top: 30px; width: 100%;}
+             .contact-info { text-align: left; } /* Keep contact info left aligned */
+             #contact .container { text-align: left; }
+             .stats-grid { grid-template-columns: repeat(2, 1fr); } /* 2 columns for stats */
+             .testimonial-grid { grid-template-columns: 1fr; } /* Single column for testimonials */
+        }
+
+
+        @media (max-width: 768px) {
+            :root { --header-height: 60px; }
+            html { scroll-padding-top: var(--header-height); }
+            #hero { margin-top: var(--header-height); height: calc(90vh - var(--header-height)); } /* Slightly taller hero */
+            #hero h1 { font-size: 2.5rem; }
+
+            /* Mobile Navigation Styles */
+            .menu-toggle { display: block; z-index: 1001; position: relative; }
+            .main-nav {
+                position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+                background-color: rgba(0, 51, 102, 0.98);
+                display: flex; justify-content: center; align-items: center;
+                transform: translateX(100%); transition: transform 0.4s ease-in-out;
+                z-index: 999;
+            }
+            .main-nav.active { transform: translateX(0); }
+            .main-nav ul { flex-direction: column; text-align: center; }
+            .main-nav ul li { margin: 20px 0; }
+            .main-nav ul li a { font-size: 1.5rem; color: #fff; }
+            .main-nav ul li a:hover, .main-nav ul li a.active { color: var(--secondary-color); }
+            .main-nav ul li a::after { display: none; }
+            .menu-toggle.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+            .menu-toggle.active .bar:nth-child(2) { opacity: 0; }
+            .menu-toggle.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+            .menu-toggle.active .bar { background-color: #fff; }
+
+            h2 { font-size: 1.8rem; }
+            section { padding: 50px 0; }
+            .program-grid { grid-template-columns: 1fr; }
+            .campus-gallery { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));}
+            .contact-form button { padding: 12px; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; } /* Still 2 columns, smaller gap */
+            .stat-item .counter { font-size: 2.2rem; }
+            .stat-item p { font-size: 0.9rem; }
+            .event-item { flex-direction: column; align-items: flex-start; gap: 10px;}
+            .event-date { margin-right: 0; margin-bottom: 5px; align-self: flex-start;}
+        }
+
+         @media (max-width: 576px) {
+             #hero h1 { font-size: 2rem; }
+             #hero p { font-size: 1rem; }
+             .btn { padding: 10px 20px; font-size: 0.9rem; }
+             .container { padding: 0 15px; }
+             .stats-grid { grid-template-columns: 1fr; } /* Single column stats */
+             .campus-gallery { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px;}
+             #back-to-top { width: 40px; height: 40px; font-size: 1.2rem; line-height: 40px; bottom: 15px; right: 15px;}
+         }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <a href="#hero" class="logo">Innovate<span>U</span></a>
+            <nav class="main-nav" id="main-nav">
+                <ul>
+                    <li><a href="#hero" class="nav-link active">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#programs" class="nav-link">Programs</a></li>
+                    <li><a href="#admissions" class="nav-link">Admissions</a></li>
+                    <li><a href="#testimonials" class="nav-link">Testimonials</a></li>
+                    <li><a href="#campus-life" class="nav-link">Campus Life</a></li>
+                    <li><a href="#events" class="nav-link">Events</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Toggle navigation">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero">
+            <div class="hero-content">
+                <h1>Welcome to Innovate University</h1>
+                <p>Shape your future with world-class education, groundbreaking research, and vibrant campus life.</p>
+                <a href="#admissions" class="btn">Apply Now</a>
+                <a href="#programs" class="btn btn-primary">Explore Programs</a>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about">
+            <div class="container">
+                 <div class="about-content fade-in-element">
+                    <div class="section-title" style="text-align: left;"><h2>About InnovateU</h2></div>
+                    <p>Innovate University is dedicated to fostering intellectual curiosity, critical thinking, and creative problem-solving. Since our founding in 19XX, we have been committed to providing a transformative educational experience.</p>
+                    <p>Our mission is to empower students to become leaders and innovators in their chosen fields, contributing positively to society. We offer a diverse range of programs within a supportive and dynamic learning environment, focused on hands-on learning and real-world application.</p>
+                 </div>
+                 <div class="about-image fade-in-element">
+                      <img src="https://placehold.co/600x450/f0ad4e/FFF?text=Our+Campus+Focus" alt="University campus building focus">
+                 </div>
+            </div>
+        </section>
+
+        <!-- Programs Section -->
+        <section id="programs">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Academic Programs</h2>
+                    <p>Discover the path that inspires you. We offer a wide array of undergraduate and graduate programs designed for success.</p>
+                </div>
+                <div class="program-grid">
+                    <!-- Program Card 1 -->
+                    <div class="program-card fade-in-element">
+                        <div class="program-image-wrapper">
+                            <img src="https://placehold.co/400x200/003366/FFF?text=Engineering" alt="Engineering Program">
+                            <div class="program-overlay">
+                                <i class="fas fa-cogs"></i>
+                                <p>Explore Engineering</p>
+                            </div>
+                        </div>
+                        <div class="program-card-content">
+                            <h3>School of Engineering</h3>
+                            <p>Cutting-edge programs in Mechanical, Electrical, Computer, and Civil Engineering.</p>
+                            <a href="#" class="btn btn-primary btn-small">Learn More</a>
+                        </div>
+                    </div>
+                    <!-- Program Card 2 -->
+                    <div class="program-card fade-in-element">
+                         <div class="program-image-wrapper">
+                            <img src="https://placehold.co/400x200/d9534f/FFF?text=Arts+%26+Sciences" alt="Arts & Sciences Program">
+                             <div class="program-overlay">
+                                <i class="fas fa-paint-brush"></i>
+                                <p>Discover Arts & Sci</p>
+                            </div>
+                        </div>
+                        <div class="program-card-content">
+                            <h3>College of Arts & Sciences</h3>
+                            <p>Explore humanities, social sciences, natural sciences, and fine arts disciplines.</p>
+                            <a href="#" class="btn btn-primary btn-small">Learn More</a>
+                        </div>
+                    </div>
+                    <!-- Program Card 3 -->
+                    <div class="program-card fade-in-element">
+                         <div class="program-image-wrapper">
+                            <img src="https://placehold.co/400x200/5cb85c/FFF?text=Business" alt="Business Program">
+                             <div class="program-overlay">
+                                <i class="fas fa-chart-line"></i>
+                                <p>Lead in Business</p>
+                            </div>
+                        </div>
+                        <div class="program-card-content">
+                            <h3>School of Business</h3>
+                            <p>Develop leadership skills in Finance, Marketing, Management, and Entrepreneurship.</p>
+                            <a href="#" class="btn btn-primary btn-small">Learn More</a>
+                        </div>
+                    </div>
+                     <!-- Program Card 4 -->
+                    <div class="program-card fade-in-element">
+                         <div class="program-image-wrapper">
+                            <img src="https://placehold.co/400x200/f0ad4e/FFF?text=Health+Sciences" alt="Health Sciences Program">
+                             <div class="program-overlay">
+                                <i class="fas fa-heartbeat"></i>
+                                <p>Care for Health</p>
+                            </div>
+                        </div>
+                        <div class="program-card-content">
+                            <h3>Health Sciences Center</h3>
+                            <p>Pursue careers in Nursing, Public Health, and Allied Health professions.</p>
+                            <a href="#" class="btn btn-primary btn-small">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section id="stats">
+            <div class="container">
+                <!-- No main title needed, background implies context -->
+                <div class="stats-grid">
+                    <div class="stat-item fade-in-element">
+                        <span class="counter" data-target="12000">0</span>
+                        <p>Students Enrolled</p>
+                    </div>
+                     <div class="stat-item fade-in-element">
+                        <span class="counter" data-target="850">0</span>
+                        <p>Faculty Members</p>
+                    </div>
+                     <div class="stat-item fade-in-element">
+                        <span class="counter" data-target="75">0</span>
+                        <p>Academic Programs</p>
+                    </div>
+                     <div class="stat-item fade-in-element">
+                        <span class="counter" data-target="95">0</span> <!-- Added % manually later -->
+                        <p>% Graduate Placement</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Admissions Section -->
+        <section id="admissions">
+            <div class="container fade-in-element">
+                <div class="section-title"><h2>Admissions</h2></div>
+                <p>Ready to start your journey at Innovate University? Find information about application deadlines, requirements, financial aid, and schedule a campus tour. Our admissions team is here to help!</p>
+                <a href="#" class="btn">Application Portal</a>
+                <a href="#" class="btn btn-primary">Request Info</a>
+            </div>
+        </section>
+
+         <!-- Testimonials Section -->
+        <section id="testimonials">
+            <div class="container">
+                <div class="section-title">
+                    <h2>What Our Students Say</h2>
+                    <p>Hear directly from members of the InnovateU community.</p>
+                </div>
+                <div class="testimonial-grid">
+                    <div class="testimonial-card fade-in-element">
+                        <p class="testimonial-quote">"The hands-on projects in the engineering program prepared me incredibly well for my career. The professors are knowledgeable and genuinely care about student success."</p>
+                        <div class="testimonial-author">
+                            <img src="https://placehold.co/100x100/003366/FFF?text=AA" alt="Student Alice Adams">
+                            <div class="testimonial-author-info">
+                                <h4>Alice Adams</h4>
+                                <span>B.S. Mechanical Engineering, '23</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card fade-in-element">
+                        <p class="testimonial-quote">"I found my passion for literature here. The small class sizes allowed for great discussions, and the campus arts scene is fantastic. I made lifelong friends."</p>
+                        <div class="testimonial-author">
+                            <img src="https://placehold.co/100x100/f0ad4e/333?text=BJ" alt="Student Ben Jones">
+                             <div class="testimonial-author-info">
+                                <h4>Ben Jones</h4>
+                                <span>B.A. English Literature, '24</span>
+                            </div>
+                        </div>
+                    </div>
+                     <div class="testimonial-card fade-in-element">
+                        <p class="testimonial-quote">"The business school's network and internship opportunities were invaluable. I felt supported and challenged throughout my MBA program."</p>
+                        <div class="testimonial-author">
+                             <img src="https://placehold.co/100x100/d9534f/FFF?text=CS" alt="Student Chloe Smith">
+                             <div class="testimonial-author-info">
+                                <h4>Chloe Smith</h4>
+                                <span>MBA, '22</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Campus Life Section -->
+        <section id="campus-life">
+            <div class="container">
+                 <div class="section-title">
+                     <h2>Vibrant Campus Life</h2>
+                     <p>Experience a rich campus life with diverse student clubs, athletics, arts, cultural events, and modern housing facilities. There's always something happening at InnovateU!</p>
+                 </div>
+                <div class="campus-gallery">
+                    <div class="gallery-item fade-in-element"><img src="https://placehold.co/300x200/003366/eee?text=Student+Life" alt="Student Activities"></div>
+                    <div class="gallery-item fade-in-element"><img src="https://placehold.co/300x200/f0ad4e/333?text=Sports+Event" alt="University Sports Team"></div>
+                    <div class="gallery-item fade-in-element"><img src="https://placehold.co/300x200/d9534f/eee?text=Library+Study" alt="University Library Interior"></div>
+                    <div class="gallery-item fade-in-element"><img src="https://placehold.co/300x200/5cb85c/eee?text=Campus+Green" alt="Campus Green Space"></div>
+                    <div class="gallery-item fade-in-element"><img src="https://placehold.co/300x200/343a40/eee?text=Modern+Dorms" alt="Student Dormitory"></div>
+                    <div class="gallery-item fade-in-element"><img src="https://placehold.co/300x200/f8f9fa/333?text=Club+Fair+Fun" alt="Student Club Fair"></div>
+                    <div class="gallery-item fade-in-element"><img src="https://placehold.co/300x200/003366/eee?text=Research+Lab" alt="Research Lab"></div>
+                    <div class="gallery-item fade-in-element"><img src="https://placehold.co/300x200/f0ad4e/333?text=Performance+Art" alt="Performance Art"></div>
+                </div>
+            </div>
+        </section>
+
+         <!-- Events Section -->
+        <section id="events">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Upcoming Events</h2>
+                    <p>Stay connected with campus activities and important dates.</p>
+                </div>
+                <div class="events-list fade-in-element">
+                    <div class="event-item">
+                        <div class="event-date">
+                            <span class="month">OCT</span>
+                            <span class="day">25</span>
+                        </div>
+                        <div class="event-details">
+                            <h4>Guest Lecture: AI in Modern Business</h4>
+                            <p><i class="fas fa-map-marker-alt"></i> auditorium</p>
+                            <p><i class="fas fa-clock"></i> 6:00 PM - 7:30 PM</p>
+                        </div>
+                    </div>
+                     <div class="event-item">
+                        <div class="event-date">
+                            <span class="month">NOV</span>
+                            <span class="day">02</span>
+                        </div>
+                        <div class="event-details">
+                            <h4>Fall Semester Career Fair</h4>
+                             <p><i class="fas fa-map-marker-alt"></i> Student Union Ballroom</p>
+                             <p><i class="fas fa-clock"></i> 10:00 AM - 3:00 PM</p>
+                        </div>
+                    </div>
+                     <div class="event-item">
+                        <div class="event-date">
+                            <span class="month">NOV</span>
+                            <span class="day">15</span>
+                        </div>
+                        <div class="event-details">
+                            <h4>InnovateU Homecoming Football Game</h4>
+                             <p><i class="fas fa-map-marker-alt"></i> University Stadium</p>
+                             <p><i class="fas fa-clock"></i> 1:00 PM Kickoff</p>
+                        </div>
+                    </div>
+                </div>
+                 <div style="text-align: center; margin-top: 2rem;">
+                     <a href="#" class="btn btn-primary">View Full Calendar</a>
+                 </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="container">
+                 <div class="contact-info fade-in-element">
+                     <div class="section-title" style="text-align: left;"><h2>Contact Us</h2></div>
+                     <p>Have questions or want to learn more? Get in touch with the right department or send us a general inquiry.</p>
+                     <p><i class="fas fa-map-marker-alt"></i> <span class="info-content"><strong>Address:</strong><br> 123 University Drive, Innovation City, ST 54321</span></p>
+                     <p><i class="fas fa-phone"></i> <span class="info-content"><strong>Phone:</strong><br> (555) 123-4567 (Admissions)</span></p>
+                     <p><i class="fas fa-envelope"></i> <span class="info-content"><strong>Email:</strong><br> <a href="mailto:admissions@innovateu.edu">admissions@innovateu.edu</a></span></p>
+                     <p><i class="fas fa-clock"></i> <span class="info-content"><strong>Office Hours:</strong><br> Monday - Friday, 9:00 AM - 5:00 PM</span></p>
+                 </div>
+                 <div class="contact-form-container fade-in-element">
+                     <h3>Send us a Message</h3>
+                     <form class="contact-form" id="contact-form">
+                         <input type="text" name="name" placeholder="Your Name" required>
+                         <input type="email" name="email" placeholder="Your Email" required>
+                         <input type="text" name="subject" placeholder="Subject">
+                         <textarea name="message" placeholder="Your Message" required></textarea>
+                         <button type="submit" class="btn btn-primary">Send Message</button>
+                         <p class="form-note">*This form is for demonstration only and does not send emails.</p>
+                     </form>
+                 </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <p>© <span id="current-year"></span> Innovate University. All Rights Reserved.</p>
+             <div class="footer-social-links">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <p style="margin-top: 1rem;"><a href="#hero">Back to Top <i class="fas fa-arrow-up" style="font-size: 0.8em;"></i></a></p>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" title="Go to top"><i class="fas fa-chevron-up"></i></button>
+
+    <!-- Image Lightbox Modal -->
+    <div id="imageLightbox" class="lightbox">
+        <span class="lightbox-close" id="closeLightbox">×</span>
+        <img class="lightbox-content" id="lightboxImg">
+    </div>
+
+    <script>
+        // --- Mobile Menu Toggle ---
+        const menuToggle = document.getElementById('menu-toggle');
+        const mainNav = document.getElementById('main-nav');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        menuToggle.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+        });
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                }
+            });
+        });
+
+        // --- Smooth Scrolling & Active Link Highlighting ---
+        const headerOffset = document.querySelector('.main-header').offsetHeight;
+
+        mainNav.addEventListener('click', function(e) {
+            if (e.target.classList.contains('nav-link')) {
+                e.preventDefault();
+                const targetId = e.target.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                    window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+                    // Update active link (can also be handled by scrollspy)
+                    // updateActiveLink(e.target);
+                }
+            }
+        });
+
+        function updateActiveLink(activeLink) {
+             navLinks.forEach(link => link.classList.remove('active'));
+             if (activeLink) activeLink.classList.add('active');
+        }
+
+        // --- ScrollSpy for Active Link Highlighting ---
+        const sections = document.querySelectorAll('section[id]');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const scrollY = window.pageYOffset;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - headerOffset - 50;
+                const sectionHeight = section.offsetHeight;
+                if (scrollY >= sectionTop && scrollY <= sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            if (scrollY < window.innerHeight * 0.4) { // Increased threshold for hero
+               current = 'hero';
+            }
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+             // If nothing else is active (e.g., near top), ensure home is active
+             if (!document.querySelector('.nav-link.active') && scrollY < headerOffset * 2) {
+                 updateActiveLink(document.querySelector('.nav-link[href="#hero"]'));
+             }
+
+        }, { passive: true }); // Improve scroll performance
+
+
+        // --- Dynamic Year in Footer ---
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // --- Prevent Default Form Submission ---
+        const contactForm = document.getElementById('contact-form');
+        if (contactForm) {
+             contactForm.addEventListener('submit', (e) => {
+                 e.preventDefault();
+                 alert('Thank you for your message! (Demo only - no email sent)');
+                 contactForm.reset(); // Clear the form after "submission"
+                 // Remove valid/invalid states visually
+                 contactForm.querySelectorAll('input, textarea').forEach(el => {
+                     el.classList.remove('is-valid', 'is-invalid'); // Assuming you might add these classes later
+                     // Reset border color if explicitly set by JS (though CSS handles it here)
+                     el.style.borderColor = '';
+                 });
+             });
+        }
+
+        // --- Animated Counter ---
+        const statsSection = document.getElementById('stats');
+        const counters = document.querySelectorAll('.counter');
+        let animationStarted = false; // Flag to ensure animation runs only once
+
+        const startCounterAnimation = () => {
+            if (animationStarted) return; // Don't restart if already animated
+            animationStarted = true;
+
+            counters.forEach(counter => {
+                counter.innerText = '0'; // Start from 0
+                const target = +counter.getAttribute('data-target'); // Get target value
+                const increment = target / 150; // Adjust speed (lower number = faster)
+
+                const updateCounter = () => {
+                    const c = +counter.innerText;
+                    if (c < target) {
+                        counter.innerText = `${Math.ceil(c + increment)}`;
+                        setTimeout(updateCounter, 10); // Speed of increment steps
+                    } else {
+                        counter.innerText = target; // Ensure exact target value
+                        // Add % sign back if needed (could be done via CSS pseudo-element too)
+                        if (counter.parentElement.textContent.includes('%')) {
+                             counter.innerText += '%';
+                        }
+                    }
+                };
+                updateCounter();
+            });
+        };
+
+        // Use Intersection Observer for Stats Counter
+        const statsObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                // When the stats section is at least 50% visible
+                if (entry.isIntersecting) {
+                    startCounterAnimation();
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        }, { threshold: 0.5 }); // Trigger when 50% is visible
+
+        if (statsSection) {
+            statsObserver.observe(statsSection);
+        }
+
+
+        // --- Back to Top Button ---
+        const backToTopButton = document.getElementById('back-to-top');
+
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) { // Show after scrolling 300px
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        }, { passive: true });
+
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+
+        // --- Image Lightbox Functionality ---
+        const lightbox = document.getElementById('imageLightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const closeLightbox = document.getElementById('closeLightbox');
+        const galleryImages = document.querySelectorAll('.campus-gallery .gallery-item img');
+
+        galleryImages.forEach(img => {
+            img.addEventListener('click', () => {
+                lightbox.style.display = 'flex'; // Use flex for centering
+                lightboxImg.src = img.src;
+                lightboxImg.alt = img.alt; // Copy alt text
+                document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            });
+        });
+
+        const closeTheLightbox = () => {
+             lightbox.style.display = 'none';
+             document.body.style.overflow = ''; // Restore scrolling
+        }
+
+        if (closeLightbox) closeLightbox.addEventListener('click', closeTheLightbox);
+        // Close lightbox if clicking on the background overlay
+        if (lightbox) lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox) { // Check if click was directly on the background
+               closeTheLightbox();
+            }
+        });
+         // Close lightbox with Escape key
+         document.addEventListener('keydown', (e) => {
+            if (e.key === "Escape" && lightbox.style.display === 'flex') {
+                closeTheLightbox();
+            }
+         });
+
+
+        // --- Simple Scroll Fade-In Animation using Intersection Observer ---
+        const fadeElements = document.querySelectorAll('.fade-in-element');
+
+        const fadeInObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target); // Stop observing once visible
+                }
+            });
+        }, {
+            rootMargin: '0px 0px -50px 0px' // Trigger a bit before element fully enters viewport
+        });
+
+        fadeElements.forEach(el => {
+            fadeInObserver.observe(el);
+        });
+
+        // --- Initial Active Link Set on Load ---
+        // Trigger scroll event slightly after load to ensure correct calculation
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                 window.dispatchEvent(new Event('scroll'));
+                 // Fallback if scroll event doesn't catch top section correctly
+                  if (!document.querySelector('.nav-link.active')) {
+                    updateActiveLink(document.querySelector('.nav-link[href="#hero"]'));
+                  }
+             }, 100); // Small delay
+         });
+
+    </script>
+
+</body>
+</html>
