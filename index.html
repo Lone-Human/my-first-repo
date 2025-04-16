@@ -3,506 +3,1231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grand Hotel Paradise - Welcome</title>
+    <title>The Grand Horizon Hotel - Premier Luxury Destination</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <style>
+        /* CSS Variables for Theming */
+        :root {
+            --primary-color: #023047; /* Deeper Navy Blue */
+            --secondary-color: #ffb703; /* Rich Gold/Orange */
+            --accent-color: #219ebc; /* Bright Teal/Cyan */
+            --text-dark: #1a1a1a;
+            --text-light: #f8f9fa;
+            --background-light: #fdfdfd; /* Slightly off-white */
+            --background-medium: #f1f3f5;
+            --background-dark: #343a40;
+            --font-heading: 'Montserrat', sans-serif;
+            --font-body: 'Lato', sans-serif;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.15);
+            --border-radius: 10px;
+            --transition-speed: 0.3s;
+        }
+
         /* Basic Reset & Body Styling */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-html {
-    scroll-behavior: smooth; /* Smooth scrolling for anchor links */
-}
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px; /* Base font size */
+        }
 
-body {
-    font-family: 'Arial', sans-serif;
-    line-height: 1.6;
-    color: #333;
-    background-color: #fff;
-}
+        body {
+            font-family: var(--font-body);
+            line-height: 1.8;
+            color: var(--text-dark);
+            background-image: linear-gradient(to bottom, var(--background-light) 95%, var(--background-medium));
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
 
-/* Utility Classes */
-.container {
-    max-width: 1100px;
-    margin: 0 auto;
-    padding: 0 20px;
-    overflow: hidden; /* Clear floats */
-}
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 0 30px;
+        }
 
-.section {
-    padding: 60px 0;
-}
+        /* Headings */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            margin-bottom: 0.8em;
+            color: var(--primary-color);
+            line-height: 1.3;
+            font-weight: 700;
+        }
 
-.bg-light {
-    background-color: #f4f4f4;
-    border-top: 1px solid #ddd;
-    border-bottom: 1px solid #ddd;
-}
+        h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 800; }
+        h2 { font-size: clamp(2rem, 4vw, 2.8rem); text-align: center; margin-bottom: 60px; }
+        h3 { font-size: clamp(1.4rem, 3vw, 1.75rem); color: var(--accent-color); }
 
-h2 {
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 2.5rem;
-    color: #444;
-}
+        /* Links & Buttons */
+        a {
+            color: var(--secondary-color);
+            text-decoration: none;
+            transition: color var(--transition-speed) ease;
+        }
+        a:hover {
+            color: var(--accent-color);
+        }
 
-h3 {
-    margin-bottom: 15px;
-    color: #555;
-}
+        .cta-button {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: var(--primary-color); /* Changed for better contrast */
+            padding: 14px 35px;
+            border: none;
+            border-radius: var(--border-radius);
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1.2px;
+            cursor: pointer;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
 
-p {
-    margin-bottom: 15px;
-}
+        .cta-button:hover {
+            background: var(--accent-color);
+            color: var(--text-light);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
 
-/* Buttons */
-.btn {
-    display: inline-block;
-    padding: 10px 25px;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
+        /* Header & Navigation */
+        header {
+            background: rgba(2, 48, 71, 0.95); /* Slightly transparent primary */
+            color: var(--text-light);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+            backdrop-filter: blur(5px); /* Frosted glass effect */
+        }
 
-.btn-primary {
-    background-color: #0056b3; /* Primary color */
-    color: #fff;
-}
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-.btn-primary:hover {
-    background-color: #003d80;
-}
+        header #logo {
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: var(--text-light);
+            font-family: var(--font-heading);
+        }
+         header #logo i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+         }
 
-.btn-secondary {
-    background-color: #6c757d; /* Secondary color */
-    color: #fff;
-}
+        header nav ul {
+            list-style: none;
+            display: flex;
+        }
 
-.btn-secondary:hover {
-    background-color: #5a6268;
-}
+        header nav ul li {
+            margin-left: 30px;
+        }
 
+        header nav ul li a {
+            color: var(--text-light);
+            padding: 10px 15px;
+            border-radius: 5px;
+            position: relative;
+            transition: color var(--transition-speed) ease, background-color var(--transition-speed) ease;
+            font-weight: bold;
+        }
+         header nav ul li a::after { /* Underline effect */
+             content: '';
+             position: absolute;
+             width: 0;
+             height: 2px;
+             bottom: 5px;
+             left: 50%;
+             transform: translateX(-50%);
+             background-color: var(--secondary-color);
+             transition: width var(--transition-speed) ease;
+         }
 
-/* Header & Navigation */
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 15px 0;
-    position: sticky; /* Make header stick */
-    top: 0;
-    z-index: 1000; /* Ensure it's above other content */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
+        header nav ul li a:hover::after,
+        header nav ul li a.active::after {
+            width: 60%;
+        }
 
-header nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+        header nav ul li a:hover,
+        header nav ul li a.active {
+            color: var(--secondary-color); /* Highlight active/hover */
+        }
 
-header .logo a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1.8rem;
-    font-weight: bold;
-}
+        /* Hero Section */
+        #hero {
+            background: linear-gradient(rgba(2, 48, 71, 0.7), rgba(2, 48, 71, 0.8)), url('https://placehold.co/1920x1080/8ecae6/023047?text=Panoramic+Hotel+Terrace') no-repeat center center/cover;
+            min-height: 95vh;
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative; /* Needed for scroll reveal */
+        }
+        #hero > * { /* Apply reveal to direct children */
+            opacity: 0; /* Initially hidden for scroll reveal */
+        }
 
-header ul {
-    list-style: none;
-    display: flex;
-}
+        #hero h1 {
+            color: var(--text-light);
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.5);
+            margin-bottom: 1rem;
+        }
 
-header ul li {
-    margin-left: 20px;
-}
+        #hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            max-width: 750px;
+        }
 
-header ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1rem;
-    padding: 5px 10px;
-    transition: color 0.3s ease;
-}
+        /* General Section Styling */
+        section {
+            padding: 100px 0;
+            overflow: hidden; /* Contain elements for animations */
+        }
+        section:nth-child(even) {
+           background-color: var(--background-medium);
+        }
 
-header ul li a:hover,
-header ul li a.active { /* Style for active link - JS needed for dynamic active state */
-    color: #00aaff; /* Highlight color */
-}
-
-
-/* Hero Section */
-.hero {
-    background: url('https://via.placeholder.com/1500x600/6677aa/ffffff?text=Welcome+to+Paradise') no-repeat center center/cover;
-    height: 70vh; /* Adjust height as needed */
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    position: relative; /* For overlay */
-}
-
-.hero::before { /* Optional overlay for better text readability */
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Dark overlay */
-}
-
-.hero-content {
-    position: relative; /* To sit above the overlay */
-    z-index: 1;
-}
-
-.hero h2 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    color: #fff; /* Override default h2 color */
-}
-
-.hero p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-}
-
-/* Rooms Section */
-.room-container {
-    display: flex;
-    flex-wrap: wrap; /* Allow items to wrap onto the next line */
-    gap: 30px; /* Space between cards */
-    justify-content: center;
-}
-
-.room-card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    overflow: hidden; /* Ensure image corners are rounded */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    flex-basis: calc(33.333% - 20px); /* Three columns, accounting for gap */
-    min-width: 280px; /* Minimum width before wrapping */
-    display: flex;
-    flex-direction: column; /* Stack content vertically */
-    padding-bottom: 20px; /* Padding at the bottom */
-    text-align: center;
-}
-
-.room-card img {
-    width: 100%;
-    height: 200px; /* Fixed height for consistency */
-    object-fit: cover; /* Crop image nicely */
-    display: block;
-}
-
-.room-card h3 {
-    margin-top: 15px;
-}
-
-.room-card p {
-    padding: 0 15px;
-    flex-grow: 1; /* Allow paragraph to take up space */
-}
-.room-card .price {
-    font-weight: bold;
-    color: #0056b3;
-    margin-bottom: 15px;
-}
-
-.room-card .btn {
-    margin: 0 auto; /* Center button */
-    display: block;
-    width: fit-content;
-}
+        /* Scroll Reveal Base Class */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
 
 
-/* Services Section */
-.services-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-around; /* Distribute items evenly */
-    text-align: center;
-}
+        /* About Section */
+        #about .about-content {
+             display: grid;
+             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+             gap: 50px;
+             align-items: center;
+        }
+        #about .about-image img {
+             width: 100%;
+             height: auto;
+             border-radius: var(--border-radius);
+             box-shadow: var(--shadow);
+             transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+        #about .about-image img:hover {
+            transform: scale(1.03);
+            box-shadow: var(--shadow-hover);
+        }
 
-.service-item {
-    flex-basis: calc(25% - 20px); /* Four columns */
-    min-width: 200px;
-}
 
-.service-item .icon {
-    font-size: 2.5rem; /* Make icon bigger */
-    display: block;
-    margin-bottom: 10px;
-}
+        /* Rooms Section */
+        #rooms .room-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+        }
+
+        .room-card {
+            background: #ffffff;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .room-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .room-card .room-image-container {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .room-card img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        .room-card:hover img {
+             transform: scale(1.1);
+        }
 
 
-/* Booking Form */
-.booking-form {
-    max-width: 600px;
-    margin: 20px auto;
-    padding: 30px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
+        .room-card .content {
+            padding: 30px;
+            flex-grow: 1; /* Make content area grow */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between; /* Push price/button down */
+        }
+         .room-card h3 { margin-bottom: 15px;}
+         .room-card p:not(.price) { margin-bottom: 20px; }
 
-.form-group {
-    margin-bottom: 20px;
-}
+        .room-card .room-features {
+            list-style: none;
+            padding: 15px 0 0 0;
+            margin-top: auto; /* Push features down if content above is short */
+            border-top: 1px solid #eee;
+            font-size: 0.9rem;
+            color: #555;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .room-card .room-features li {
+            display: flex;
+            align-items: center;
+             flex-basis: calc(50% - 5px); /* Two columns of features */
+        }
+         .room-card .room-features i {
+            margin-right: 8px;
+            color: var(--primary-color);
+            width: 18px;
+            text-align: center;
+         }
+        .room-card .price-book {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
 
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-    color: #555;
-}
+        .room-card .price {
+            font-weight: bold;
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+        .room-card .price span {
+            font-size: 0.9rem;
+            font-weight: normal;
+            color: #777;
+        }
+        .room-card .book-button {
+             font-size: 0.9rem;
+             padding: 8px 15px;
+             background-color: var(--accent-color);
+             color: white;
+        }
+        .room-card .book-button:hover {
+            background-color: var(--secondary-color);
+             color: var(--primary-color);
+        }
 
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group input[type="date"],
-.form-group input[type="number"],
-.form-group select,
-.form-group textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 1rem;
-}
 
-.form-group textarea {
-    resize: vertical; /* Allow vertical resize only */
-}
+        /* Amenities Section */
+        #amenities ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            padding: 0;
+        }
 
-.booking-form button[type="submit"] {
-    width: 100%;
-    padding: 15px;
-    font-size: 1.1rem;
-}
+        #amenities li {
+            background: #ffffff;
+            padding: 20px 25px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 3px 8px rgba(0,0,0,0.07);
+            display: flex;
+            align-items: center;
+            transition: transform var(--transition-speed) ease, background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+            border-left: 4px solid var(--accent-color);
+        }
+         #amenities li:hover {
+             transform: translateX(6px);
+             background-color: var(--accent-color);
+             color: white;
+             cursor: default;
+         }
+         #amenities li:hover i {
+             color: white; /* Change icon color on hover */
+         }
 
-/* Footer */
-footer {
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 20px 0;
-    margin-top: 40px; /* Space above footer */
-}
+        #amenities li i {
+            color: var(--secondary-color);
+            font-size: 1.4rem;
+            margin-right: 18px;
+            width: 25px;
+            text-align: center;
+             transition: color var(--transition-speed) ease;
+        }
 
-/* Responsive Design */
-@media (max-width: 992px) {
-    .room-card {
-        flex-basis: calc(50% - 15px); /* Two columns on medium screens */
-    }
-    .service-item {
-        flex-basis: calc(50% - 10px); /* Two columns */
-    }
-}
+        /* Testimonials Section */
+        #testimonials {
+            background-color: var(--background-medium);
+        }
 
-@media (max-width: 768px) {
-    header nav {
-        flex-direction: column;
-        align-items: center;
-    }
-    header .logo {
-        margin-bottom: 10px;
-    }
-    header ul {
-        flex-direction: column;
-        text-align: center;
-        width: 100%;
-    }
-    header ul li {
-        margin: 5px 0;
-    }
+        .testimonial-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+        }
+        .testimonial-card {
+            background: var(--background-light);
+            padding: 35px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border-left: 6px solid var(--secondary-color);
+            position: relative;
+        }
+        .testimonial-card i.fa-quote-left { /* Larger quote icon */
+            position: absolute;
+            top: 20px;
+            left: 25px;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            opacity: 0.1;
+        }
+        .testimonial-card blockquote {
+            font-style: italic;
+            margin-bottom: 20px;
+            padding-left: 10px; /* Small indent */
+            font-size: 1.05rem;
+        }
 
-    .hero h2 {
-        font-size: 2.5rem;
-    }
-    .hero p {
-        font-size: 1rem;
-    }
+        .testimonial-card .author {
+            font-weight: bold;
+            margin-top: 15px;
+            color: var(--primary-color);
+            text-align: right;
+        }
+        .testimonial-card .author::before {
+             content: "— ";
+        }
 
-    h2 {
-        font-size: 2rem;
-    }
+        /* Gallery Section */
+        #gallery .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
 
-    .room-card {
-        flex-basis: 100%; /* Single column on small screens */
-        margin-bottom: 20px; /* Add margin between stacked cards */
-    }
+        #gallery .gallery-item {
+             overflow: hidden;
+             border-radius: var(--border-radius);
+             box-shadow: var(--shadow);
+             position: relative;
+             cursor: pointer;
+        }
 
-     .service-item {
-        flex-basis: 100%; /* Single column */
-        margin-bottom: 20px;
-    }
+        #gallery img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease, filter 0.5s ease;
+        }
+        #gallery .gallery-item:hover img {
+            transform: scale(1.1);
+            filter: brightness(0.8);
+        }
+         #gallery .gallery-item::after { /* Search icon overlay on hover */
+             content: '\f002'; /* Font Awesome search icon */
+             font-family: "Font Awesome 6 Free";
+             font-weight: 900;
+             position: absolute;
+             top: 50%;
+             left: 50%;
+             transform: translate(-50%, -50%) scale(0.5);
+             font-size: 3rem;
+             color: white;
+             opacity: 0;
+             transition: opacity var(--transition-speed) ease, transform var(--transition-speed) ease;
+         }
+         #gallery .gallery-item:hover::after {
+             opacity: 0.8;
+             transform: translate(-50%, -50%) scale(1);
+         }
 
-    .booking-form {
-        padding: 20px;
-    }
-}
 
-@media (max-width: 576px) {
-    .hero {
-        height: 50vh;
-    }
-    .hero h2 {
-        font-size: 2rem;
-    }
-    .btn {
-        padding: 8px 18px;
-        font-size: 0.9rem;
-    }
-}
+        /* Lightbox Modal */
+        #lightbox-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            display: none; /* Initially hidden */
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            padding: 20px;
+            cursor: pointer; /* Close on overlay click */
+        }
+        #lightbox-modal.visible {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        #lightbox-modal img {
+            display: block;
+            max-width: 90%;
+            max-height: 90%;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            border-radius: 5px;
+            cursor: default; /* Don't close when clicking image */
+            animation: scaleIn 0.3s ease;
+        }
+        @keyframes scaleIn { from { transform: scale(0.8); } to { transform: scale(1); } }
+
+        #lightbox-modal .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 2.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s ease;
+        }
+        #lightbox-modal .close-btn:hover {
+            color: var(--secondary-color);
+        }
+
+        /* FAQ Section */
+        #faq { background-color: var(--background-light); }
+
+        .faq-item {
+            background-color: #fff;
+            margin-bottom: 15px;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+            overflow: hidden; /* Ensure smooth transition */
+        }
+
+        .faq-question {
+            padding: 20px 25px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            color: var(--primary-color);
+            transition: background-color var(--transition-speed) ease;
+        }
+        .faq-question:hover {
+             background-color: var(--background-medium);
+        }
+
+        .faq-question i {
+            transition: transform var(--transition-speed) ease;
+            color: var(--accent-color);
+        }
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            padding: 0 25px;
+            transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+        }
+        .faq-answer p {
+             padding-bottom: 20px;
+             margin: 0;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 300px; /* Adjust as needed */
+            padding: 0 25px;
+        }
+
+
+        /* Location Section */
+        #location .map-container {
+            position: relative;
+            padding-bottom: 50%; /* 2:1 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            border: 5px solid white; /* Nice frame */
+        }
+        #location iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+
+        /* Contact Section */
+        #contact { background-color: var(--background-medium); }
+        #contact .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr; /* Give form slightly more space */
+            gap: 60px;
+            align-items: flex-start;
+        }
+        #contact .contact-info h3, #contact .contact-form h3 {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .contact-info p {
+            margin-bottom: 18px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+        }
+         .contact-info i {
+            margin-right: 18px;
+            color: var(--primary-color);
+            font-size: 1.3rem;
+             width: 25px;
+             text-align: center;
+         }
+
+        .contact-form label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: var(--border-radius);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+        }
+         .contact-form input[type="text"]:focus,
+         .contact-form input[type="email"]:focus,
+         .contact-form textarea:focus {
+             border-color: var(--accent-color);
+             box-shadow: 0 0 0 3px rgba(33, 158, 188, 0.2);
+             outline: none;
+         }
+
+        .contact-form textarea {
+            min-height: 160px;
+            resize: vertical;
+        }
+        .contact-form button {
+             width: 100%; /* Full width button */
+        }
+        .form-note {
+            font-size: 0.9rem;
+            color: #777;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: var(--text-light);
+            text-align: center;
+            padding: 50px 0;
+            margin-top: 0; /* Remove margin as last section might have background */
+            border-top: 5px solid var(--secondary-color);
+        }
+        footer .social-links a {
+             color: var(--text-light);
+             margin: 0 12px;
+             font-size: 1.6rem;
+             transition: color var(--transition-speed) ease, transform var(--transition-speed) ease;
+             display: inline-block; /* Allow transform */
+        }
+         footer .social-links a:hover {
+             color: var(--secondary-color);
+             transform: translateY(-3px);
+         }
+         footer p {
+             margin-top: 20px;
+             font-size: 0.95rem;
+             opacity: 0.8;
+         }
+
+         /* Back to Top Button */
+        #back-to-top {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: var(--secondary-color);
+            color: var(--primary-color);
+            border: none;
+            border-radius: 50%;
+            width: 55px;
+            height: 55px;
+            font-size: 1.6rem;
+            line-height: 55px;
+            text-align: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            transition: opacity var(--transition-speed) ease, visibility var(--transition-speed) ease, background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+            z-index: 999;
+        }
+        #back-to-top:hover {
+             background-color: var(--accent-color);
+             color: white;
+             transform: scale(1.1);
+        }
+         #back-to-top.visible {
+             opacity: 1;
+             visibility: visible;
+         }
+
+
+        /* Responsive Design Adjustments */
+        @media (max-width: 992px) {
+             #about .about-content,
+             #contact .contact-container {
+                 grid-template-columns: 1fr; /* Stack columns */
+             }
+             .contact-info { margin-bottom: 40px; }
+              #about .about-image { order: -1; margin-bottom: 30px;} /* Move image above text on mobile */
+             h2 { font-size: clamp(1.8rem, 3.5vw, 2.2rem); margin-bottom: 50px; }
+             section { padding: 80px 0;}
+        }
+
+
+        @media (max-width: 768px) {
+            .container { padding: 0 20px; }
+            header .container { flex-direction: column; text-align: center; }
+            header nav ul { margin-top: 20px; flex-wrap: wrap; justify-content: center; padding-left: 0;}
+            header nav ul li { margin: 5px 10px; }
+
+            #hero { min-height: 80vh; }
+            #hero h1 { font-size: clamp(2.2rem, 6vw, 2.8rem); }
+            #hero p { font-size: 1.1rem; }
+
+            #rooms .room-container,
+            #testimonials .testimonial-container,
+            #gallery .gallery-grid,
+            #amenities ul {
+                 grid-template-columns: 1fr; /* Stack items */
+             }
+             .room-card, .testimonial-card { max-width: 450px; margin: 0 auto; }
+             .room-card .room-features li { flex-basis: 100%; } /* Single column features on mobile */
+
+              #faq .faq-question { padding: 18px 20px; font-size: 0.95rem;}
+              #faq .faq-answer { padding: 0 20px;}
+              #faq .faq-answer p { padding-bottom: 18px;}
+
+             #location .map-container { padding-bottom: 60%; } /* Adjust map ratio */
+             footer { padding: 40px 0; }
+        }
+
+         @media (max-width: 480px) {
+             body { font-size: 15px; line-height: 1.7; }
+             .container { padding: 0 15px; }
+             #hero { min-height: 70vh; }
+             .cta-button { font-size: 1rem; padding: 12px 25px; }
+             header #logo { font-size: 1.6rem; }
+             header nav ul li { margin: 5px 5px; }
+             header nav ul li a { padding: 8px 10px; font-size: 0.9rem;}
+             h2 { font-size: clamp(1.6rem, 5vw, 1.9rem); margin-bottom: 40px;}
+             section { padding: 60px 0; }
+             .room-card .content { padding: 25px; }
+             .testimonial-card { padding: 30px; }
+             #back-to-top { width: 45px; height: 45px; font-size: 1.4rem; line-height: 45px; bottom: 15px; right: 15px;}
+         }
+
     </style>
 </head>
 <body>
 
     <!-- Header -->
     <header>
-        <nav class="container">
-            <h1 class="logo"><a href="index.html">Grand Hotel Paradise</a></h1>
-            <ul>
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#rooms">Rooms</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#booking">Booking</a></li>
-            </ul>
-        </nav>
+        <div class="container">
+            <a href="#hero" id="logo"><i class="fas fa-water-ladder"></i> The Grand Horizon</a>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="#hero" class="nav-link">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                    <li><a href="#rooms" class="nav-link">Rooms</a></li>
+                    <li><a href="#amenities" class="nav-link">Amenities</a></li>
+                    <li><a href="#testimonials" class="nav-link">Reviews</a></li>
+                    <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                    <li><a href="#faq" class="nav-link">FAQ</a></li>
+                    <li><a href="#location" class="nav-link">Location</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-content container">
-            <h2>Experience Luxury Like Never Before</h2>
-            <p>Your perfect getaway awaits at the Grand Hotel Paradise.</p>
-            <a href="#booking" class="btn btn-primary">Book Your Stay</a>
-        </div>
+    <section id="hero">
+        <h1 class="reveal">Your Oasis of Luxury Awaits</h1>
+        <p class="reveal" style="transition-delay: 0.2s;">Immerse yourself in unparalleled comfort and breathtaking views at The Grand Horizon Hotel.</p>
+        <a href="#rooms" class="cta-button reveal" style="transition-delay: 0.4s;">Discover Our Suites</a>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="container section">
-        <h2>About Us</h2>
-        <p>Welcome to Grand Hotel Paradise, where luxury meets comfort. Nestled in a serene location, we offer world-class amenities, exceptional service, and an unforgettable experience. Whether you're here for business or leisure, our goal is to make your stay perfect.</p>
+    <!-- About Us Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="reveal">Experience Unforgettable Hospitality</h2>
+            <div class="about-content">
+                <div class="about-text reveal" style="transition-delay: 0.2s;">
+                    <p>Welcome to The Grand Horizon, where modern elegance meets timeless service. Situated perfectly to offer stunning vistas and convenient access to local attractions, our hotel is designed to be your home away from home, elevated.</p>
+                    <p>From meticulously designed rooms and suites to gourmet dining experiences and state-of-the-art wellness facilities, every aspect of your stay is crafted with attention to detail. Our passionate team is dedicated to making your visit truly memorable, whether for leisure or business.</p>
+                    <a href="#contact" class="cta-button" style="margin-top: 15px;">Learn More</a>
+                </div>
+                <div class="about-image reveal">
+                    <img src="https://placehold.co/600x450/b7e4c7/023047?text=Inviting+Hotel+Exterior" alt="Inviting Hotel Exterior View">
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Rooms Section -->
-    <section id="rooms" class="section bg-light">
+    <section id="rooms">
         <div class="container">
-            <h2>Our Rooms</h2>
+             <h2 class="reveal">Indulge in Comfort & Style</h2>
             <div class="room-container">
-                <article class="room-card">
-                    <img src="https://via.placeholder.com/400x250/cccccc/888888?text=Standard+Room" alt="Standard Room">
-                    <h3>Standard Room</h3>
-                    <p>Comfortable and cozy, perfect for solo travelers or couples. Includes queen bed, Wi-Fi, and ensuite bathroom.</p>
-                    <p class="price">From $150 / night</p>
-                    <a href="#booking" class="btn btn-secondary">Book Now</a>
+                <!-- Room Card 1 -->
+                <article class="room-card reveal">
+                    <div class="room-image-container">
+                        <img src="https://placehold.co/400x260/fec89a/023047?text=Ocean+View+King" alt="Ocean View King Room">
+                    </div>
+                    <div class="content">
+                        <div> <!-- Content wrapper for flex grow -->
+                            <h3>Ocean View King</h3>
+                            <p>Wake up to stunning ocean vistas in this beautifully appointed room with a luxurious king bed.</p>
+                            <ul class="room-features">
+                                <li><i class="fas fa-bed"></i> 1 King Bed</li>
+                                <li><i class="fas fa-users"></i> 2 Guests</li>
+                                <li><i class="fas fa-ruler-combined"></i> 35 m²</li>
+                                <li><i class="fas fa-water"></i> Ocean View</li>
+                                <li><i class="fas fa-wifi"></i> Free WiFi</li>
+                                <li><i class="fas fa-tv"></i> Smart TV</li>
+                            </ul>
+                        </div>
+                        <div class="price-book">
+                            <p class="price">From $210 <span>/ night</span></p>
+                            <a href="#booking-placeholder" class="cta-button book-button">Book</a>
+                        </div>
+                    </div>
                 </article>
-                <article class="room-card">
-                    <img src="https://via.placeholder.com/400x250/bbbbbb/777777?text=Deluxe+Room" alt="Deluxe Room">
-                    <h3>Deluxe Room</h3>
-                    <p>Spacious room with a king bed, seating area, city view, enhanced amenities, and complimentary breakfast.</p>
-                    <p class="price">From $250 / night</p>
-                    <a href="#booking" class="btn btn-secondary">Book Now</a>
+                <!-- Room Card 2 -->
+                <article class="room-card reveal" style="transition-delay: 0.1s;">
+                     <div class="room-image-container">
+                        <img src="https://placehold.co/400x260/ade8f4/023047?text=Horizon+Suite" alt="Horizon Suite Living Area">
+                    </div>
+                     <div class="content">
+                         <div>
+                            <h3>Horizon Suite</h3>
+                            <p>Unwind in style with a spacious separate living area, premium amenities, and panoramic city views.</p>
+                             <ul class="room-features">
+                                <li><i class="fas fa-bed"></i> 1 King + Sofa</li>
+                                <li><i class="fas fa-users"></i> 4 Guests</li>
+                                <li><i class="fas fa-ruler-combined"></i> 60 m²</li>
+                                <li><i class="fas fa-city"></i> City Panorama</li>
+                                <li><i class="fas fa-coffee"></i> Espresso Maker</li>
+                                <li><i class="fas fa-bath"></i> Jacuzzi Tub</li>
+                            </ul>
+                        </div>
+                        <div class="price-book">
+                            <p class="price">From $350 <span>/ night</span></p>
+                             <a href="#booking-placeholder" class="cta-button book-button">Book</a>
+                        </div>
+                    </div>
                 </article>
-                <article class="room-card">
-                    <img src="https://via.placeholder.com/400x250/aaaaaa/666666?text=Suite" alt="Suite">
-                    <h3>Suite</h3>
-                    <p>Our premium offering. Separate living area, panoramic views, king bed, jacuzzi tub, and exclusive lounge access.</p>
-                    <p class="price">From $400 / night</p>
-                    <a href="#booking" class="btn btn-secondary">Book Now</a>
+                 <!-- Room Card 3 -->
+                <article class="room-card reveal" style="transition-delay: 0.2s;">
+                     <div class="room-image-container">
+                         <img src="https://placehold.co/400x260/caf0f8/023047?text=Terrace+Double+Queen" alt="Terrace Double Queen Room">
+                     </div>
+                     <div class="content">
+                        <div>
+                            <h3>Terrace Double Queen</h3>
+                            <p>Perfect for families or friends, featuring two queen beds and a private terrace space.</p>
+                            <ul class="room-features">
+                                <li><i class="fas fa-bed"></i> 2 Queen Beds</li>
+                                <li><i class="fas fa-users"></i> 4 Guests</li>
+                                <li><i class="fas fa-ruler-combined"></i> 45 m²</li>
+                                <li><i class="fas fa-leaf"></i> Private Terrace</li>
+                                <li><i class="fas fa-shower"></i> Rain Shower</li>
+                                <li><i class="fas fa-wind"></i> Air Conditioned</li>
+                            </ul>
+                        </div>
+                        <div class="price-book">
+                            <p class="price">From $260 <span>/ night</span></p>
+                            <a href="#booking-placeholder" class="cta-button book-button">Book</a>
+                        </div>
+                    </div>
                 </article>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="container section">
-        <h2>Our Services</h2>
-        <div class="services-container">
-            <div class="service-item">
-                <span class="icon">🍽️</span> <!-- Placeholder icon -->
-                <h3>Restaurant</h3>
-                <p>Fine dining with local and international cuisine.</p>
-            </div>
-            <div class="service-item">
-                 <span class="icon">🏊</span> <!-- Placeholder icon -->
-                <h3>Swimming Pool</h3>
-                <p>Relax and rejuvenate in our outdoor pool.</p>
-            </div>
-            <div class="service-item">
-                 <span class="icon">💪</span> <!-- Placeholder icon -->
-                <h3>Fitness Center</h3>
-                <p>Stay fit with our state-of-the-art gym equipment.</p>
-            </div>
-             <div class="service-item">
-                 <span class="icon">📶</span> <!-- Placeholder icon -->
-                <h3>Free Wi-Fi</h3>
-                <p>High-speed internet access throughout the hotel.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Booking Section -->
-    <section id="booking" class="section bg-light">
+    <!-- Amenities Section -->
+    <section id="amenities">
         <div class="container">
-            <h2>Make an Inquiry</h2>
-            <p>Fill out the form below to inquire about availability. Please note this form does not confirm a booking.</p>
-            <form class="booking-form">
-                <div class="form-group">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
+            <h2 class="reveal">Facilities for Your Delight</h2>
+            <ul>
+                <li class="reveal"><i class="fas fa-person-swimming"></i> Heated Infinity Pool</li>
+                <li class="reveal" style="transition-delay: 0.05s;"><i class="fas fa-wifi"></i> Blazing-Fast Fiber Wi-Fi</li>
+                <li class="reveal" style="transition-delay: 0.1s;"><i class="fas fa-utensils"></i> Award-Winning Dining</li>
+                <li class="reveal" style="transition-delay: 0.15s;"><i class="fas fa-dumbbell"></i> 24/7 Fitness Pavilion</li>
+                <li class="reveal" style="transition-delay: 0.2s;"><i class="fas fa-spa"></i> Tranquil Harmony Spa</li>
+                <li class="reveal" style="transition-delay: 0.25s;"><i class="fas fa-concierge-bell"></i> Personal Concierge</li>
+                <li class="reveal" style="transition-delay: 0.3s;"><i class="fas fa-car-side"></i> Secure Valet Parking</li>
+                <li class="reveal" style="transition-delay: 0.35s;"><i class="fas fa-briefcase"></i> Executive Business Lounge</li>
+                <li class="reveal" style="transition-delay: 0.4s;"><i class="fas fa-martini-glass-citrus"></i> Rooftop Sky Bar</li>
+                <li class="reveal" style="transition-delay: 0.45s;"><i class="fas fa-plane"></i> Luxury Airport Transfers</li>
+                <li class="reveal" style="transition-delay: 0.5s;"><i class="fas fa-bell"></i> In-Room Dining Service</li>
+                <li class="reveal" style="transition-delay: 0.55s;"><i class="fas fa-shield-alt"></i> Enhanced Security</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+        <div class="container">
+            <h2 class="reveal">Echoes of Satisfaction</h2>
+            <div class="testimonial-container">
+                <div class="testimonial-card reveal">
+                     <i class="fas fa-quote-left"></i>
+                    <blockquote>The definition of luxury! From check-in to check-out, the service was impeccable. The Horizon Suite had views that took our breath away. Worth every penny!</blockquote>
+                    <p class="author">Emily Carter</p>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
+                <div class="testimonial-card reveal" style="transition-delay: 0.15s;">
+                     <i class="fas fa-quote-left"></i>
+                    <blockquote>Attended a conference nearby and stayed here. Exceeded all expectations. Quiet room, great amenities (especially the gym!), and the staff were incredibly helpful. Made my business trip feel like a mini-vacation.</blockquote>
+                    <p class="author">Raj Patel</p>
                 </div>
-                <div class="form-group">
-                    <label for="checkin">Check-in Date:</label>
-                    <input type="date" id="checkin" name="checkin" required>
+                 <div class="testimonial-card reveal" style="transition-delay: 0.3s;">
+                    <i class="fas fa-quote-left"></i>
+                    <blockquote>Our family loved the Terrace Room! The kids had space to play, and we enjoyed relaxing on the terrace in the evenings. The pool was a huge hit too. Fantastic family-friendly hotel.</blockquote>
+                    <p class="author">The Rodriguez Family</p>
                 </div>
-                <div class="form-group">
-                    <label for="checkout">Check-out Date:</label>
-                    <input type="date" id="checkout" name="checkout" required>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery">
+         <div class="container">
+            <h2 class="reveal">A Glimpse of Paradise</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item reveal"><img src="https://placehold.co/400x250/00b4d8/023047?text=Pool+at+Sunset" alt="Infinity Pool at Sunset" data-lightbox-src="https://placehold.co/1200x800/00b4d8/023047?text=Pool+at+Sunset"></div>
+                <div class="gallery-item reveal" style="transition-delay: 0.05s;"><img src="https://placehold.co/400x250/ffb703/023047?text=Gourmet+Plate" alt="Gourmet Dish Presentation" data-lightbox-src="https://placehold.co/1200x800/ffb703/023047?text=Gourmet+Plate"></div>
+                <div class="gallery-item reveal" style="transition-delay: 0.1s;"><img src="https://placehold.co/400x250/90e0ef/023047?text=Suite+Bedroom" alt="Luxurious Suite Bedroom Interior" data-lightbox-src="https://placehold.co/1200x800/90e0ef/023047?text=Suite+Bedroom"></div>
+                <div class="gallery-item reveal" style="transition-delay: 0.15s;"><img src="https://placehold.co/400x250/023047/caf0f8?text=Night+Facade" alt="Hotel Facade Illuminated at Night" data-lightbox-src="https://placehold.co/1200x800/023047/caf0f8?text=Night+Facade"></div>
+                <div class="gallery-item reveal" style="transition-delay: 0.2s;"><img src="https://placehold.co/400x250/ffafcc/023047?text=Spa+Relaxation" alt="Serene Spa Relaxation Area" data-lightbox-src="https://placehold.co/1200x800/ffafcc/023047?text=Spa+Relaxation"></div>
+                <div class="gallery-item reveal" style="transition-delay: 0.25s;"><img src="https://placehold.co/400x250/b7e4c7/023047?text=Lobby+Elegance" alt="Elegant Hotel Lobby Seating" data-lightbox-src="https://placehold.co/1200x800/b7e4c7/023047?text=Lobby+Elegance"></div>
+                <div class="gallery-item reveal" style="transition-delay: 0.3s;"><img src="https://placehold.co/400x250/ade8f4/023047?text=Rooftop+Bar+View" alt="View from the Rooftop Bar" data-lightbox-src="https://placehold.co/1200x800/ade8f4/023047?text=Rooftop+Bar+View"></div>
+                <div class="gallery-item reveal" style="transition-delay: 0.35s;"><img src="https://placehold.co/400x250/e9c46a/023047?text=Fitness+Center+Equip" alt="Modern Fitness Center Equipment" data-lightbox-src="https://placehold.co/1200x800/e9c46a/023047?text=Fitness+Center+Equip"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+        <div class="container">
+            <h2 class="reveal">Frequently Asked Questions</h2>
+            <div class="faq-container">
+                <div class="faq-item reveal">
+                    <div class="faq-question">
+                        <span>What are the check-in and check-out times?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Check-in time is 3:00 PM and check-out time is 11:00 AM. Early check-in and late check-out may be available upon request, subject to availability and potential fees.</p>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="room-type">Room Type:</label>
-                    <select id="room-type" name="room-type">
-                        <option value="standard">Standard Room</option>
-                        <option value="deluxe">Deluxe Room</option>
-                        <option value="suite">Suite</option>
-                    </select>
+                 <div class="faq-item reveal" style="transition-delay: 0.1s;">
+                    <div class="faq-question">
+                        <span>Is parking available at the hotel?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we offer secure valet parking for our guests at a daily rate. Self-parking options are also available nearby. Please contact the concierge for details.</p>
+                    </div>
                 </div>
-                 <div class="form-group">
-                    <label for="guests">Number of Guests:</label>
-                    <input type="number" id="guests" name="guests" min="1" value="1" required>
+                 <div class="faq-item reveal" style="transition-delay: 0.2s;">
+                    <div class="faq-question">
+                        <span>Do you allow pets?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We understand pets are part of the family! We welcome well-behaved small dogs (under 25 lbs) in designated pet-friendly rooms. A pet fee and specific policies apply. Please contact us directly to book a pet-friendly room.</p>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="message">Special Requests:</label>
-                    <textarea id="message" name="message" rows="4"></textarea>
+                 <div class="faq-item reveal" style="transition-delay: 0.3s;">
+                    <div class="faq-question">
+                        <span>What dining options are available?</span>
+                         <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The Grand Horizon boasts several dining experiences: our signature fine-dining restaurant 'Celeste', the casual 'Horizon Bistro' for all-day meals, the chic 'Sky Bar' for cocktails and light bites, and 24/7 in-room dining service.</p>
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Send Inquiry</button>
-            </form>
+                  <div class="faq-item reveal" style="transition-delay: 0.4s;">
+                    <div class="faq-question">
+                        <span>Is there a fitness center and spa?</span>
+                         <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely! We have a state-of-the-art Fitness Pavilion open 24/7 for guests. Our Tranquil Harmony Spa offers a range of treatments and relaxation facilities. Advance booking for spa treatments is recommended.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+     <!-- Location Section -->
+        <!-- Location Section -->
+        <section id="location">
+          <div class="container">
+              <h2 class="reveal">Find Us Here</h2>
+              <div class="map-container reveal">
+                  <!-- ** Updated Google Maps embed code for India Gate, New Delhi ** -->
+                  <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3502.0600403296907!2d77.2273219759443!3d28.62798708427974!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce2daa9eb4d0b%3A0x717971125923e5d!2sIndia%20Gate!5e0!3m2!1sen!2sin!4v1694777815185!5m2!1sen!2sin"
+                      width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Hotel Location Map - India Gate, New Delhi Area">
+                  </iframe>
+               </div>
+               <p style="text-align:center; margin-top:25px; font-size: 1.1rem;" class="reveal">Conveniently located near major landmarks and transport hubs in the heart of the city.</p> <!-- Generic text suitable for many locations -->
+          </div>
+      </section>
+
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="reveal">Connect With Us</h2>
+            <div class="contact-container">
+                <div class="contact-info reveal">
+                    <h3>Reach Out Directly</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 1 Horizon Plaza, Downtown Metropolis, DM 98765</p>
+                    <p><i class="fas fa-phone"></i> <a href="tel:+15551234567">+1 (555) 123-4567</a> (Reservations)</p>
+                    <p><i class="fas fa-headset"></i> <a href="tel:+15559876543">+1 (555) 987-6543</a> (Concierge)</p>
+                    <p><i class="fas fa-envelope"></i> <a href="mailto:reservations@grandhorizon.luxury">reservations@grandhorizon.luxury</a></p>
+                    <p><i class="fas fa-clock"></i> Front Desk & Concierge Available 24/7</p>
+                     <h3 style="margin-top: 35px;">Ready to Book?</h3>
+                     <p>Secure your unforgettable stay online or give us a call.</p>
+                     <a href="#booking-placeholder" class="cta-button" style="margin-top: 10px;">Check Availability</a>
+                     
+                </div>
+                <div class="contact-form reveal" style="transition-delay: 0.15s;">
+                    <h3>Send an Inquiry</h3>
+                    <form action="#" method="POST" id="contactForm"> <!-- Action points nowhere -->
+                        <label for="name">Full Name:</label>
+                        <input type="text" id="name" name="name" required placeholder="e.g., Jane Doe">
+
+                        <label for="email">Email Address:</label>
+                        <input type="email" id="email" name="email" required placeholder="e.g., jane.doe@email.com">
+
+                        <label for="subject">Subject:</label>
+                        <input type="text" id="subject" name="subject" placeholder="e.g., Question about Spa Services">
+
+                        <label for="message">Your Message:</label>
+                        <textarea id="message" name="message" required placeholder="Please type your inquiry here..."></textarea>
+
+                        <button type="submit" class="cta-button">Send Message</button>
+                        
+                    </form>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>© 2023 Grand Hotel Paradise. All rights reserved.</p>
-            <!-- Add social media links here if desired -->
+             <div class="social-links">
+                <a href="#" aria-label="Facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Twitter" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="TripAdvisor" title="TripAdvisor"><i class="fab fa-tripadvisor"></i></a>
+                 <a href="#" aria-label="LinkedIn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <p>© 2025 The Grand Horizon Hotel. Experience Elevated Luxury. <a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a></p>
         </div>
     </footer>
+
+    <!-- Back to Top Button -->
+    <a href="#hero" id="back-to-top" title="Back to Top" aria-label="Back to Top"><i class="fas fa-arrow-up"></i></a>
+
+    <!-- Lightbox Modal Structure -->
+    <div id="lightbox-modal">
+        <span class="close-btn">×</span>
+        <img src="" alt="Lightbox Image" id="lightbox-image">
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Scroll Reveal Animation ---
+            const revealElements = document.querySelectorAll('.reveal');
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        // Optional: Stop observing after reveal to save resources
+                        // revealObserver.unobserve(entry.target);
+                    }
+                    // Optional: Unreveal when scrolling up
+                    // else {
+                    //     entry.target.classList.remove('visible');
+                    // }
+                });
+            }, {
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            });
+
+            revealElements.forEach(el => {
+                revealObserver.observe(el);
+            });
+
+
+            // --- Back to Top Button Visibility ---
+            const backToTopButton = document.getElementById('back-to-top');
+            if (backToTopButton) {
+                window.addEventListener('scroll', () => {
+                    if (window.pageYOffset > 300) {
+                        backToTopButton.classList.add('visible');
+                    } else {
+                        backToTopButton.classList.remove('visible');
+                    }
+                });
+            }
+
+            // --- Image Gallery Lightbox ---
+            const lightboxModal = document.getElementById('lightbox-modal');
+            const lightboxImage = document.getElementById('lightbox-image');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const closeBtn = lightboxModal ? lightboxModal.querySelector('.close-btn') : null;
+
+            if (lightboxModal && lightboxImage && galleryItems.length > 0) {
+                galleryItems.forEach(item => {
+                    item.addEventListener('click', () => {
+                        const imgElement = item.querySelector('img');
+                        const largeSrc = imgElement.getAttribute('data-lightbox-src') || imgElement.src; // Fallback to small src
+                        lightboxImage.src = largeSrc;
+                        lightboxImage.alt = imgElement.alt;
+                        lightboxModal.classList.add('visible');
+                    });
+                });
+
+                // Close lightbox
+                const closeModal = () => lightboxModal.classList.remove('visible');
+                if (closeBtn) {
+                    closeBtn.addEventListener('click', closeModal);
+                }
+                lightboxModal.addEventListener('click', (e) => {
+                    // Close only if clicking the background overlay, not the image itself
+                    if (e.target === lightboxModal) {
+                        closeModal();
+                    }
+                });
+                 // Close with Escape key
+                 document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && lightboxModal.classList.contains('visible')) {
+                        closeModal();
+                    }
+                 });
+            }
+
+            // --- FAQ Accordion ---
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                if (question) {
+                    question.addEventListener('click', () => {
+                        // Optional: Close other open FAQs
+                        // faqItems.forEach(otherItem => {
+                        //     if (otherItem !== item) {
+                        //         otherItem.classList.remove('active');
+                        //     }
+                        // });
+                        item.classList.toggle('active');
+                    });
+                }
+            });
+
+             // --- Active Navigation Link Highlighting ---
+             const navLinks = document.querySelectorAll('#main-nav .nav-link');
+             const sections = document.querySelectorAll('section[id]'); // Get all sections with an ID
+
+             function highlightNavLink() {
+                 let currentSectionId = '';
+                 const scrollY = window.pageYOffset;
+
+                 sections.forEach(section => {
+                     const sectionTop = section.offsetTop - 100; // Adjust offset as needed
+                     const sectionHeight = section.offsetHeight;
+                     const sectionId = section.getAttribute('id');
+
+                     if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                         currentSectionId = sectionId;
+                     }
+                 });
+
+                 navLinks.forEach(link => {
+                     link.classList.remove('active');
+                     if (link.getAttribute('href') === `#${currentSectionId}`) {
+                         link.classList.add('active');
+                     }
+                 });
+             }
+
+             // Initial call in case the page loads scrolled
+             highlightNavLink();
+             // Add listener with throttle/debounce for performance in real app
+             window.addEventListener('scroll', highlightNavLink);
+
+
+            // --- Basic Contact Form Placeholder ---
+            const contactForm = document.getElementById('contactForm');
+             if (contactForm) {
+                 contactForm.addEventListener('submit', (e) => {
+                     e.preventDefault(); // Prevent actual submission
+                     alert('Thank you for your inquiry! (This is a demo - no email was sent).');
+                     // Optionally clear the form: contactForm.reset();
+                 });
+             }
+
+        });
+    </script>
 
 </body>
 </html>
